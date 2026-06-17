@@ -1,0 +1,138 @@
+.section {
+  position: relative;
+  width: 100%;
+  padding: 4rem 0 5rem;
+  background-color: #000000; /* Pure black theme */
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Cinematic subtle structural fade */
+.gridFade {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  
+  /* 1. The WebKit Prefix */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 80%);
+  
+  /* 2. The Standard Property */
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 80%);
+
+  opacity: 0.8;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding: 0 3rem;
+  }
+}
+
+/* --- Header --- */
+.header {
+  max-width: 720px;
+  margin-bottom: 6rem;
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.accentLine {
+  width: 3rem;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
+
+.eyebrow {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #a3a3a3;
+}
+
+.volumeCount {
+  margin-left: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+}
+
+.headline {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.headlineAccent {
+  display: block;
+  color: #888888;
+  font-style: italic;
+}
+
+.lede {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #737373;
+  max-width: 38rem;
+}
+
+.bookRow {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 6rem 2rem;
+  justify-items: center;
+  align-items: end;
+  padding-bottom: 5rem;
+  
+  /* Crucial 3D Setup */
+  perspective: 2000px;
+  transform-style: preserve-3d; /* Keeps books 3D while shelf rotates */
+  transform-origin: bottom center; /* Hinges the tilt from the floor */
+}
+
+@media (min-width: 768px) {
+  .bookRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .bookRow {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4rem 3rem;
+  }
+}
+
+

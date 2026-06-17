@@ -1,0 +1,272 @@
+/* components/ui/Book.module.css */
+
+:root {
+  --book-thickness: 30px;
+  --book-radius: 3px 14px 3px 14px; 
+}
+
+.bookContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.interactionZone {
+  width: 100%;
+  height: 440px;
+  cursor: pointer;
+  outline: none;
+  touch-action: none;
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1600px;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floatWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bookVolume {
+  position: relative;
+  width: 230px;
+  height: 340px;
+  transform-style: preserve-3d;
+  /* Z=0 is now the exact center of the book */
+  transform-origin: center center;
+}
+
+/* --- The Solid Paper Edges --- */
+.pagesBlock {
+  position: absolute;
+  /* Inset creates the realistic cover overhang */
+  inset: 2px 4px 2px 2px;
+  transform-style: preserve-3d;
+  /* Sits perfectly at Z=0 */
+}
+
+/* Page edges use a 26px thickness to sit perfectly inside the 30px covers */
+.pagesRight {
+  position: absolute;
+  right: 0;
+  top: 1px; bottom: 1px;
+  width: 26px;
+  /* Locks exactly to the right edge */
+  transform: translateX(13px) rotateY(90deg);
+  background: repeating-linear-gradient(to bottom, #e4dfd4, #e4dfd4 1px, #f0ebe1 1px, #f0ebe1 3px);
+  box-shadow: inset 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.pagesTop {
+  position: absolute;
+  top: 0;
+  left: 1px; right: 1px;
+  height: 26px;
+  /* Locks exactly to the top edge */
+  transform: translateY(-13px) rotateX(90deg);
+  background: repeating-linear-gradient(to right, #e4dfd4, #e4dfd4 1px, #f0ebe1 1px, #f0ebe1 3px);
+  box-shadow: inset 0 -4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.pagesBottom {
+  position: absolute;
+  bottom: 0;
+  left: 1px; right: 1px;
+  height: 26px;
+  /* Locks exactly to the bottom edge */
+  transform: translateY(13px) rotateX(-90deg);
+  background: repeating-linear-gradient(to right, #e4dfd4, #e4dfd4 1px, #f0ebe1 1px, #f0ebe1 3px);
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Filler to prevent seeing inside the hollow box */
+.pagesBackFill {
+  position: absolute;
+  inset: 0;
+  background: #f0ebe1;
+  transform: translateZ(-13px);
+  border-radius: 2px 10px 2px 10px;
+}
+
+/* --- Back Cover --- */
+.backCover {
+  position: absolute;
+  inset: 0;
+  /* Pushed backward by exactly half thickness */
+  transform: translateZ(-15px) rotateY(180deg);
+  border-radius: var(--book-radius);
+  background: #111;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+/* --- Spine --- */
+.spine {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  /* Perfectly bridges the gap from +15px to -15px */
+  transform: translateX(-15px) rotateY(-90deg);
+  background-image: linear-gradient(to right, #0a0a0a, #1a1a1a 15%, #0d0d0d 85%, #050505);
+  border-radius: 4px 0 0 4px;
+}
+
+/* --- Inside Content (Revealed when open) --- */
+.insideContent {
+  position: absolute;
+  inset: 2px 4px 2px 2px;
+  background: #fdfbf7;
+  /* Sits just behind the front cover (+15px) to close the box */
+  transform: translateZ(13px);
+  border-radius: 2px 12px 2px 12px;
+  padding: 32px 24px;
+  box-shadow: inset 15px 0 30px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.insideText {
+  font-family: ui-serif, Georgia, serif;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-top: auto;
+  font-style: italic;
+}
+
+/* --- Front Cover --- */
+.frontCover {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  /* Z-translation is handled safely by Framer Motion in the TSX file */
+  z-index: 10;
+}
+
+.coverFrontFace, .coverBackFace {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: var(--book-radius);
+  overflow: hidden;
+  background: #000;
+}
+
+.artwork {
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Vibrant Overlay */
+.overlayWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  mix-blend-mode: multiply; 
+  opacity: 0.35; 
+}
+
+.overlayImage {
+  object-fit: cover;
+  filter: contrast(1.2); 
+}
+
+.coverVignette {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.5) 150%);
+  pointer-events: none;
+}
+
+.coverGrain {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  opacity: 0.03; 
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.coverCrease {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  background: linear-gradient(to right, rgba(255,255,255,0.05), rgba(0,0,0,0.4) 30%, transparent);
+  mix-blend-mode: overlay;
+  z-index: 5;
+}
+
+.glare {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.coverBackFace {
+  transform: rotateY(180deg);
+  background: #111;
+  box-shadow: inset -15px 0 35px rgba(0, 0, 0, 0.9);
+}
+
+/* --- Shadows & Typography --- */
+.contactShadow {
+  position: absolute;
+  bottom: -25px;
+  width: 85%;
+  height: 25px;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 50%;
+  transform: rotateX(90deg) translateZ(-160px);
+  pointer-events: none;
+  filter: blur(14px);
+}
+
+.metadata {
+  margin-top: 32px;
+  text-align: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.metaTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #ededed;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+}
+
+.metaAuthor {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: #888;
+  margin: 0 0 4px;
+}
+
+.metaGenre {
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  color: #555;
+  text-transform: uppercase;
+}

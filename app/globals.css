@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --gray-1: #0a0a0a;
+    --gray-2: #121212;
+    --gray-3: #1a1a1a;
+    --gray-4: #262626;
+    --gray-5: #333333;
+    --gray-6: #404040;
+    --gray-7: #525252;
+    --gray-8: #737373;
+    --gray-9: #a3a3a3;
+    --gray-10: #d4d4d4;
+    --gray-11: #e5e5e5;
+    --gray-12: #fafafa;
+    --accent: #FF4D00; /* The neon orange accent from the inspiration */
+  }
+@keyframes glint {
+  0% { transform: translateX(-100%) skewX(12deg); }
+  100% { transform: translateX(200%) skewX(12deg); }
+}
+
+/* --- LENIS PHYSICS SCROLL ENGINE --- */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Add this to your globals.css */
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+  body {
+    @apply bg-[var(--gray-1)] text-[var(--gray-12)] antialiased selection:bg-[var(--accent)] selection:text-white;
+  }
+}
+
+/* Luxury Scrollbar */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.12);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* Selection */
+
+::selection {
+  background: rgba(214, 179, 112, 0.25);
+  color: white;
+}
+
+/* Smooth Font Rendering */
+
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- ScrollIndicator-SPECIFIC STYLES --- */
+html, body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
