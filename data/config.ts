@@ -107,7 +107,7 @@ export const projects = [
     subtitle: "Your personal expense tracker with advancedpayment integrations",
     description: "Modern UI/UX concept for an advanced expense tracker that helps users manage their finances effortlessly. It includes features such as smart expense tracking, budgeting, analytics, and advanced payment integration, with a focus on a seamless and intuitive user experience.",
     tech: ["Figma", "Canva", "Notion", "FigJam"],
-    link: "https://www.figma.com/design/3bsg7CvaxAywgXW6II7t1F/Pouch-Pal-Designs?node-id=0-1&t=hvdA7qzVKgv3oBwK-1",    
+    link: "https://www.figma.com/design/EQUuR9VYNyTUWO5urxdfmG/PouchPal-Web-Design?node-id=0-1&p=f",    
     themeColor: "#10b981", 
     imageSrc: "/assets/images/projects/p2.png",
     wavePath: "M 0 16 V 4 H 12.5 V 16 H 25 V 4 H 37.5 V 16 H 50 V 4 H 62.5 V 16 H 75 V 4 H 87.5 V 16 H 100 V 4 H 112.5 V 16 H 125 V 4 H 137.5 V 16 H 150 V 4 H 162.5 V 16 H 175 V 4 H 187.5 V 16 H 200 V 4 H 212.5 V 16 H 225 V 4 H 237.5 V 16 H 250 V 4 H 262.5 V 16 H 275 V 4 H 287.5 V 16 H 300 V 4 H 312.5 V 16 H 325 V 4 H 337.5 V 16 H 350 V 4 H 362.5 V 16 H 375 V 4 H 387.5 V 16 H 400 V 16"
@@ -127,34 +127,34 @@ export const projects = [
     imageSrc: "/assets/images/projects/p3.png",
     wavePath: "M 0 16 L 25 4 V 16 L 50 4 V 16 L 75 4 V 16 L 100 4 V 16 L 125 4 V 16 L 150 4 V 16 L 175 4 V 16 L 200 4 V 16 L 225 4 V 16 L 250 4 V 16 L 275 4 V 16 L 300 4 V 16 L 325 4 V 16 L 350 4 V 16 L 375 4 V 16 L 400 4 V 16"
   },
-  // {
-  //   id: "04",
-  //   // sysId: "[MEM-001]",
-  //   sysId: "[PRJ-004]",
-  //   freq: "5.1 kHz",
-  //   title: "ReMind",
-  //   year: "2026",
-  //   subtitle: "Total recall. Totally private.",
-  //   description: "Captures, indexes, and recalls everything you do on your machine. Screenshot OCR, audio transcription, vector search. Every byte stays yours.",
-  //   tech: ["TypeScript", "Python", "Electron", "ChromaDB"],
-  //   link: "github.com/DonTizi/ReMind",
-  //   themeColor: "#a855f7",
-  //   imageSrc: "/assets/images/projects/p4.png",
-  //   wavePath: "M 0 10 H 15 L 20 4 L 25 16 L 30 10 H 65 L 70 4 L 75 16 L 80 10 H 115 L 120 4 L 125 16 L 130 10 H 165 L 170 4 L 175 16 L 180 10 H 215 L 220 4 L 225 16 L 230 10 H 265 L 270 4 L 275 16 L 280 10 H 315 L 320 4 L 325 16 L 330 10 H 365 L 370 4 L 375 16 L 380 10 H 400"
-  // },
-  // {
-  //   id: "05",
-  //   // sysId: "[RAG-002]",
-  //   sysId: "[PRJ-005]",
-  //   freq: "2.3 kHz",
-  //   title: "SwiftRAG",
-  //   year: "2026",
-  //   subtitle: "The first RAG library for Swift",
-  //   description: "RAG on iOS and macOS using Apple NLP for embeddings and local Ollama for generation. AI that actually runs in your pocket, not in a datacenter.",
-  //   tech: ["Swift", "Apple NLP", "Ollama", "iOS"],
-  //   link: "github.com/DonTizi/SwiftRAG",
-  //   themeColor: "#F16001",
-  //   imageSrc: "/assets/images/projects/p5.png",
-  //   wavePath: "M 0 10 L 12.5 4 L 25 10 L 37.5 16 L 50 10 L 62.5 4 L 75 10 L 87.5 16 L 100 10 L 112.5 4 L 125 10 L 137.5 16 L 150 10 L 162.5 4 L 175 10 L 187.5 16 L 200 10 L 212.5 4 L 225 10 L 237.5 16 L 250 10 L 262.5 4 L 275 10 L 287.5 16 L 300 10 L 312.5 4 L 325 10 L 337.5 16 L 350 10 L 362.5 4 L 375 10 L 387.5 16 L 400 10"
-  // }
+  {
+    id: "04",
+    // sysId: "[MEM-001]",
+    sysId: "[PRJ-004]",
+    freq: "5.1 kHz",
+    title: "CertiGen",
+    year: "2026",
+    subtitle: "Total recall. Totally private.",
+    description: "Captures, indexes, and recalls everything you do on your machine. Screenshot OCR, audio transcription, vector search. Every byte stays yours.",
+    tech: ["TypeScript", "Python", "Electron", "ChromaDB"],
+    link: "github.com/DonTizi/ReMind",
+    themeColor: "#a855f7",
+    imageSrc: "/assets/images/projects/p4.png",
+    wavePath: "M 0 10 H 15 L 20 4 L 25 16 L 30 10 H 65 L 70 4 L 75 16 L 80 10 H 115 L 120 4 L 125 16 L 130 10 H 165 L 170 4 L 175 16 L 180 10 H 215 L 220 4 L 225 16 L 230 10 H 265 L 270 4 L 275 16 L 280 10 H 315 L 320 4 L 325 16 L 330 10 H 365 L 370 4 L 375 16 L 380 10 H 400"
+  },
+  {
+    id: "05",
+    // sysId: "[RAG-002]",
+    sysId: "[PRJ-005]",
+    freq: "2.3 kHz",
+    title: "SwiftRAG",
+    year: "2026",
+    subtitle: "The first RAG library for Swift",
+    description: "RAG on iOS and macOS using Apple NLP for embeddings and local Ollama for generation. AI that actually runs in your pocket, not in a datacenter.",
+    tech: ["Swift", "Apple NLP", "Ollama", "iOS"],
+    link: "github.com/DonTizi/SwiftRAG",
+    themeColor: "#F16001",
+    imageSrc: "/assets/images/projects/p5.png",
+    wavePath: "M 0 10 L 12.5 4 L 25 10 L 37.5 16 L 50 10 L 62.5 4 L 75 10 L 87.5 16 L 100 10 L 112.5 4 L 125 10 L 137.5 16 L 150 10 L 162.5 4 L 175 10 L 187.5 16 L 200 10 L 212.5 4 L 225 10 L 237.5 16 L 250 10 L 262.5 4 L 275 10 L 287.5 16 L 300 10 L 312.5 4 L 325 10 L 337.5 16 L 350 10 L 362.5 4 L 375 10 L 387.5 16 L 400 10"
+  }
 ];
