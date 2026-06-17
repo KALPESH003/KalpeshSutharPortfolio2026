@@ -12,7 +12,7 @@ import Link from "next/link";
 import {projects} from "../../data/config";
 
 // --- PREMIUM EASING ---
-const easePremium = [0.76, 0, 0.24, 1];
+const easePremium = [0.76, 0, 0.24, 1] as const;
 
 // --- DYNAMIC WAVEFORM COMPONENT ---
 const TelemetryWave = ({ themeColor, pathData }: { themeColor: string, pathData: string }) => (
