@@ -107,7 +107,7 @@ export const projects = [
     subtitle: "Your personal expense tracker with advancedpayment integrations",
     description: "Modern UI/UX concept for an advanced expense tracker that helps users manage their finances effortlessly. It includes features such as smart expense tracking, budgeting, analytics, and advanced payment integration, with a focus on a seamless and intuitive user experience.",
     tech: ["Figma", "Canva", "Notion", "FigJam"],
-    link: "https://www.figma.com/proto/3bsg7CvaxAywgXW6II7t1F/Pouch-Pal-Designs?node-id=0-1&t=VooWI1NcqK3aVwFN-1",
+    link: "https://www.figma.com/design/3bsg7CvaxAywgXW6II7t1F/Pouch-Pal-Designs?node-id=0-1&t=hvdA7qzVKgv3oBwK-1",    
     themeColor: "#10b981", 
     imageSrc: "/assets/images/projects/p2.png",
     wavePath: "M 0 16 V 4 H 12.5 V 16 H 25 V 4 H 37.5 V 16 H 50 V 4 H 62.5 V 16 H 75 V 4 H 87.5 V 16 H 100 V 4 H 112.5 V 16 H 125 V 4 H 137.5 V 16 H 150 V 4 H 162.5 V 16 H 175 V 4 H 187.5 V 16 H 200 V 4 H 212.5 V 16 H 225 V 4 H 237.5 V 16 H 250 V 4 H 262.5 V 16 H 275 V 4 H 287.5 V 16 H 300 V 4 H 312.5 V 16 H 325 V 4 H 337.5 V 16 H 350 V 4 H 362.5 V 16 H 375 V 4 H 387.5 V 16 H 400 V 16"
