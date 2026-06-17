@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://kalpeshsuthar.vercel.app'; // IMPORTANT: Replace with your actual live domain
+  const baseUrl = 'https://kalpeshksuthar.vercel.app'; // IMPORTANT: Replace with your actual live domain
 
   return [
     // 1. THE ROOT (Highest Priority)

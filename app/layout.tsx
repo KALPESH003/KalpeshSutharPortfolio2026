@@ -26,7 +26,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 // --- 1. Comprehensive SEO Metadata ---
 export const metadata: Metadata = {
-   metadataBase: new URL("https://kalpeshsuthar.vercel.app"),
+   metadataBase: new URL("https://kalpeshksuthar.vercel.app"),
   title: "Kalpesh K. Suthar | Full-Stack Developer",
   description: "Portfolio of Kalpesh K. Suthar, a Full-Stack Developer based in Vadodara, Gujarat. Exploring modern web engineering and cinematic UI experiences.",
   keywords: [
@@ -45,12 +45,12 @@ export const metadata: Metadata = {
     "Frontend Developer",
     "Full-Stack Developer"
   ],
-  authors: [{ name: "Kalpesh K. Suthar", url: "https://kalpeshsuthar.vercel.app" }], // Replace with your actual domain
+  authors: [{ name: "Kalpesh K. Suthar", url: "https://kalpeshksuthar.vercel.app" }], // Replace with your actual domain
   creator: "Kalpesh K. Suthar",
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://kalpeshsuthar.vercel.app", // Replace with your actual domain
+    url: "https://kalpeshksuthar.vercel.app", // Replace with your actual domain
     title: "Kalpesh K. Suthar | Full-Stack Developer",
     description: "Explore the interactive portfolio and engineering projects of Kalpesh K. Suthar.",
     siteName: "Kalpesh K. Suthar Portfolio",
@@ -89,7 +89,7 @@ const jsonLd = {
   "@type": "Person",
   name: "Kalpesh K. Suthar",
   alternateName: "Kalpesh Suthar",
-  url: "https://kalpeshsuthar.vercel.app", // Replace with your actual domain
+  url: "https://kalpeshksuthar.vercel.app", // Replace with your actual domain
   jobTitle: "Full-Stack Developer",
   address: {
     "@type": "PostalAddress",

@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   // IMPORTANT: Ensure this exactly matches your live domain
-  const baseUrl = "https://kalpeshsuthar.vercel.app";
+  const baseUrl = "https://kalpeshksuthar.vercel.app";
 
   return {
     rules: {
