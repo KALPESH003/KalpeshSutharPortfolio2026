@@ -27,11 +27,12 @@ const jetbrainsMono = JetBrains_Mono({
 // --- 1. Comprehensive SEO Metadata ---
 export const metadata: Metadata = {
    metadataBase: new URL("https://kalpeshksuthar.vercel.app"),
-  title: "Kalpesh K. Suthar | Full-Stack Developer",
-  description: "Portfolio of Kalpesh K. Suthar, a Full-Stack Developer based in Vadodara, Gujarat. Exploring modern web engineering and cinematic UI experiences.",
+  title: "Kalpesh K. Suthar | Software Engineer",
+  description: "Portfolio of Kalpesh K Suthar, a Software Engineer based in Vadodara, Gujarat. Exploring modern software engineering and cinematic UI experiences.",
   keywords: [
     "Kalpesh K. Suthar",
     "Kalpesh Suthar",
+    "Kalpesh K Suthar",
     "Kalpesh",
     "Kalpesh Developer",
     "UI/UX designer",
@@ -43,7 +44,8 @@ export const metadata: Metadata = {
     "React Developer",
     "Next.js Engineer",
     "Frontend Developer",
-    "Full-Stack Developer"
+    "Full-Stack Developer",
+    "Software Engineer"
   ],
   authors: [{ name: "Kalpesh K. Suthar", url: "https://kalpeshksuthar.vercel.app" }], // Replace with your actual domain
   creator: "Kalpesh K. Suthar",
