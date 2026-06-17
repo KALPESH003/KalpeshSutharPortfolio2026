@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-// import GridRuler from "@/components/ui/GridRuler";
 import ScrollIndicator from "@/components/ui/ScrollIndicator";
 import LiveClock from "@/components/ui/LiveClock";
 import SmoothScroll from "@/components/SmoothScroll"; 
 import CinematicSidebar from "@/components/ui/Sidebar";
+
 // --- Fonts ---
 const inter = Inter({
   subsets: ["latin"],
@@ -28,11 +28,11 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
    metadataBase: new URL("https://kalpeshksuthar.vercel.app"),
   title: "Kalpesh K. Suthar | Software Engineer",
-  description: "Portfolio of Kalpesh K Suthar, a Software Engineer based in Vadodara, Gujarat. Exploring modern software engineering and cinematic UI experiences.",
+  description: "Portfolio of Kalpesh K. Suthar, a Software Engineer based in Vadodara, Gujarat. Exploring modern software engineering and cinematic UI experiences.",
   keywords: [
+    "Kalpesh K Suthar",
     "Kalpesh K. Suthar",
     "Kalpesh Suthar",
-    "Kalpesh K Suthar",
     "Kalpesh",
     "Kalpesh Developer",
     "UI/UX designer",
@@ -47,27 +47,34 @@ export const metadata: Metadata = {
     "Full-Stack Developer",
     "Software Engineer"
   ],
-  authors: [{ name: "Kalpesh K. Suthar", url: "https://kalpeshksuthar.vercel.app" }], // Replace with your actual domain
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
+
+  authors: [{ name: "Kalpesh K. Suthar", url: "https://kalpeshksuthar.vercel.app" }], 
   creator: "Kalpesh K. Suthar",
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://kalpeshksuthar.vercel.app", // Replace with your actual domain
-    title: "Kalpesh K. Suthar | Full-Stack Developer",
+    url: "https://kalpeshksuthar.vercel.app", 
+    title: "Kalpesh K. Suthar | Software Engineer",
     description: "Explore the interactive portfolio and engineering projects of Kalpesh K. Suthar.",
     siteName: "Kalpesh K. Suthar Portfolio",
     images: [
       {
-        url: "/og-image.png", // Ensure you have this 1200x630 image in your /public folder
+        url: "/og-image.png", // Ensure 1200x630 image in /public folder
         width: 1200,
         height: 630,
-        alt: "Kalpesh K. Suthar - Full-Stack Developer",
+        alt: "Kalpesh K. Suthar - Software Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kalpesh K. Suthar | Full-Stack Developer",
+    title: "Kalpesh K. Suthar | Software Engineer",
     description: "Explore the interactive portfolio and engineering projects of Kalpesh K. Suthar.",
     images: ["/og-image.png"],
   },
@@ -85,14 +92,14 @@ export const metadata: Metadata = {
 };
 
 // --- 2. JSON-LD Structured Data (Entity Graph) ---
-// This explicitly connects your name to your external profiles for Google.
+// This explicitly connects name to external profiles for Google.
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Kalpesh K. Suthar",
   alternateName: "Kalpesh Suthar",
-  url: "https://kalpeshksuthar.vercel.app", // Replace with your actual domain
-  jobTitle: "Full-Stack Developer",
+  url: "https://kalpeshksuthar.vercel.app", 
+  jobTitle: "Software Engineer",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Vadodara",
@@ -106,9 +113,9 @@ const jsonLd = {
   ],
   alumniOf: {
     "@type": "CollegeOrUniversity",
-    name: "The Maharaja Sayajirao University of Baroda (MSUB)"                  // MUST UPDATE THIS (for MSc IT)
+    name: "The Maharaja Sayajirao University of Baroda (MSUB)"         
   },
-  knowsAbout: ["Full-Stack Development", "React", "Next.js", "TypeScript", "Node.js", "MSc IT"]
+  knowsAbout: ["Software Engineer", "Full-Stack Development", "React", "Next.js", "TypeScript", "Node.js", "MSc IT"]
 };
 
 export default function RootLayout({
