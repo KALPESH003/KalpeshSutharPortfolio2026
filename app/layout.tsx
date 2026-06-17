@@ -26,6 +26,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 // --- 1. Comprehensive SEO Metadata ---
 export const metadata: Metadata = {
+   metadataBase: new URL("https://kalpeshsuthar.vercel.app"),
   title: "Kalpesh K. Suthar | Full-Stack Developer",
   description: "Portfolio of Kalpesh K. Suthar, a Full-Stack Developer based in Vadodara, Gujarat. Exploring modern web engineering and cinematic UI experiences.",
   keywords: [

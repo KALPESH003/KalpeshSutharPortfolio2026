@@ -257,12 +257,11 @@ export default function Footer() {
 
           <div className="absolute -top-[15%] -left-[5%] w-[400px] h-[400px] pointer-events-none z-0 opacity-40 mix-blend-overlay flex items-center justify-center">
             <div className="absolute w-[80%] h-[80%] rounded-full border border-white/20 border-dashed border-[1px]" />
-            <motion.div 
-              animate={{ rotate: 360 }}
-              transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-              className="absolute w-[60%] h-[60%] rounded-full border border-white/30 border-dashed border-[2px]" 
-              style={{ borderDasharray: '4 12' }}
-            />
+            <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+            className="absolute w-[60%] h-[60%] rounded-full border border-dashed border-white/30"
+          />
             <div className="absolute w-full h-[1px] bg-white/20" />
             <div className="absolute h-full w-[1px] bg-white/20" />
           </div>
