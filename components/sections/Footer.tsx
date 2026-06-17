@@ -6,7 +6,7 @@ import * as THREE from "three";
 import { personalInfo } from "@/data/config";
 
 // --- PREMIUM EASING & STYLES ---
-const easePremium = [0.76, 0, 0.24, 1];
+const easePremium = [0.76, 0, 0.24, 1] as const;
 
 // --- MAGNETIC PILL BUTTON ---
 const MagneticPill = ({ email }: { email: string }) => {
