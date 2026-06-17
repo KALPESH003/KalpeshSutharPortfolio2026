@@ -143,7 +143,7 @@ export default function Book({
                 className={styles.frontCover}
                 style={{ 
                   rotateY: coverRotateY, 
-                  transform: "translateZ(15px)",
+                  z: 15, 
                   transformOrigin: "left center" 
                 }}
               >
