@@ -18,6 +18,8 @@ const uiDesigns = [
   { id: "07", title: "Customized Arch. Icon Pack", category: "Asset Set", type: "icons", src: "assets/images/UiArchive/Archlogopack.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "08", title: "Iconography", category: "Asset Set", type: "logo", src: "assets/images/UiArchive/t1.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "09", title: "Foldium Logo", category: "App Logo", type: "logo", src: "assets/images/UiArchive/foldium.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "10", title: "UniOcular Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Uniocular.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "11", title: "Banner Design", category: "Asset", type: "Background", src: "assets/images/UiArchive/k.png?auto=format&fit=crop&q=80&w=1600" },
 ];
 
 // Layout configuration for the full gallery view (incorporates void & orange blocks)
@@ -36,6 +38,8 @@ const galleryItems = [
   { type: 'void', id: 'void-2' },
   { type: 'image', index: 8, data: uiDesigns[8] },
   { type: 'orange', id: 'orange-3', title: 'Visual Protocol', subtitle: 'Brd. Asset' },
+  { type: 'image', index: 9, data: uiDesigns[9] },
+  { type: 'image', index: 10, data: uiDesigns[10] },
 ];
 
 // --- ARCHITECTURAL BACKGROUND COMPONENT ---
