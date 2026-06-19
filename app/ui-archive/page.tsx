@@ -8,38 +8,38 @@ import { X, ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
 const easePremium = [0.76, 0, 0.24, 1] as const;
 
 // --- MOCK LOCAL UI DESIGNS ---
-const uiDesigns = [
+export const uiDesignsItems = [
   { id: "01", title: "Land Rover Dashboard", category: "System UI", type: "ui", src: "assets/images/UiArchive/RRui.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "02", title: "Wallet Icon", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Wallet.png?auto=format&fit=crop&q=80&w=1600" }, 
-  { id: "03", title: "PocuhPal Expense Tracker", category: "Interface", type: "ui", src: "assets/images/UiArchive/pouchpal.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "02", title: "Wallet Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Wallet.png?auto=format&fit=crop&q=80&w=1600" }, 
+  { id: "03", title: "PocuhPal Expense Tracker", category: "USER Interface", type: "ui", src: "assets/images/UiArchive/pouchpal.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "04", title: "Taruna Interiors", category: "Web Design", type: "ui", src: "assets/images/UiArchive/tarunainteriors.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "05", title: "Tushar Iyer Co. Logo", category: "Design System", type: "logo", src: "assets/images/UiArchive/t3.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "06", title: "FOX STDUIO", category: "Web App", type: "ui", src: "assets/images/UiArchive/foxstudio.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "05", title: "Tushar Iyer Co. Logo", category: "Corporate Logo", type: "logo", src: "assets/images/UiArchive/t3.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "06", title: "FOX STDUIO", category: "Web Design", type: "ui", src: "assets/images/UiArchive/foxstudio.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "07", title: "Customized Arch. Icon Pack", category: "Asset Set", type: "icons", src: "assets/images/UiArchive/Archlogopack.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "08", title: "Iconography", category: "Asset Set", type: "logo", src: "assets/images/UiArchive/t1.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "09", title: "Foldium Logo", category: "App Logo", type: "logo", src: "assets/images/UiArchive/foldium.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "10", title: "UniOcular Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Uniocular.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "11", title: "Banner Design", category: "Asset", type: "Background", src: "assets/images/UiArchive/k.png?auto=format&fit=crop&q=80&w=1600" },
+  // { id: "11", title: "Banner Design", category: "Asset", type: "Background", src: "assets/images/UiArchive/.png?auto=format&fit=crop&q=80&w=1600" },
 ];
 
 // Layout configuration for the full gallery view (incorporates void & orange blocks)
 const galleryItems = [
-  { type: 'image', index: 0, data: uiDesigns[0] },
-  { type: 'image', index: 1, data: uiDesigns[1] },
-  { type: 'image', index: 2, data: uiDesigns[2] },
+  { type: 'image', index: 0, data: uiDesignsItems[0] },
+  { type: 'image', index: 1, data: uiDesignsItems[1] },
+  { type: 'image', index: 2, data: uiDesignsItems[2] },
   { type: 'void', id: 'void-1' },
-  { type: 'image', index: 3, data: uiDesigns[3] },
+  { type: 'image', index: 3, data: uiDesignsItems[3] },
   { type: 'orange', id: 'orange-2', title: 'Data Viz', subtitle: 'Component' },
-  { type: 'image', index: 4, data: uiDesigns[4] },
-  { type: 'image', index: 5, data: uiDesigns[5] },
-  { type: 'image', index: 6, data: uiDesigns[6] },
+  { type: 'image', index: 4, data: uiDesignsItems[4] },
+  { type: 'image', index: 5, data: uiDesignsItems[5] },
+  { type: 'image', index: 6, data: uiDesignsItems[6] },
   { type: 'orange', id: 'orange-1', title: 'Brand Identity', subtitle: 'Sys. Asset' },
-  { type: 'image', index: 7, data: uiDesigns[7] },
+  { type: 'image', index: 7, data: uiDesignsItems[7] },
   { type: 'void', id: 'void-2' },
-  { type: 'image', index: 8, data: uiDesigns[8] },
+  { type: 'image', index: 8, data: uiDesignsItems[8] },
   { type: 'orange', id: 'orange-3', title: 'Visual Protocol', subtitle: 'Brd. Asset' },
-  { type: 'image', index: 9, data: uiDesigns[9] },
-  { type: 'image', index: 10, data: uiDesigns[10] },
+  { type: 'image', index: 9, data: uiDesignsItems[9] },
+  { type: 'image', index: 10, data: uiDesignsItems[10] },
 ];
 
 // --- ARCHITECTURAL BACKGROUND COMPONENT ---
@@ -99,10 +99,10 @@ export default function UiArchiveGallery() {
     if (lightboxIndex === null) return;
     if (e.key === "Escape") setLightboxIndex(null);
     if (e.key === "ArrowLeft") {
-      setLightboxIndex((prev) => (prev === 0 ? uiDesigns.length - 1 : prev! - 1));
+      setLightboxIndex((prev) => (prev === 0 ? uiDesignsItems.length - 1 : prev! - 1));
     }
     if (e.key === "ArrowRight") {
-      setLightboxIndex((prev) => (prev === uiDesigns.length - 1 ? 0 : prev! + 1));
+      setLightboxIndex((prev) => (prev === uiDesignsItems.length - 1 ? 0 : prev! + 1));
     }
   }, [lightboxIndex]);
 
@@ -255,9 +255,9 @@ export default function UiArchiveGallery() {
               
               {/* Left Side: Index & Title */}
               <div className="text-[10px] font-mono uppercase tracking-[0.2em] flex items-center gap-4">
-                <span className="text-white/40">{lightboxIndex + 1} / {uiDesigns.length}</span>
+                <span className="text-white/40">{lightboxIndex + 1} / {uiDesignsItems.length}</span>
                 <span className="text-white/20">&mdash;</span>
-                <span className="text-white/60">{uiDesigns[lightboxIndex].title}</span>
+                <span className="text-white/60">{uiDesignsItems[lightboxIndex].title}</span>
               </div>
 
               {/* Right Side: Exact Crosshair Alignment for Close Button */}
@@ -276,7 +276,7 @@ export default function UiArchiveGallery() {
             onClick={() =>
               setLightboxIndex((prev) => {
                 if (prev === null) return 0;
-                return prev === 0 ? uiDesigns.length - 1 : prev - 1;
+                return prev === 0 ? uiDesignsItems.length - 1 : prev - 1;
               })
             }
               className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 text-white/20 hover:text-white p-4 z-50 transition-colors"
@@ -288,7 +288,7 @@ export default function UiArchiveGallery() {
              onClick={() =>
               setLightboxIndex((prev) => {
                 if (prev === null) return 0;
-                return prev === uiDesigns.length - 1 ? 0 : prev + 1;
+                return prev === uiDesignsItems.length - 1 ? 0 : prev + 1;
               })
             }
               className="absolute right-8 md:right-20 top-1/2 -translate-y-1/2 text-white/20 hover:text-white p-4 z-50 transition-colors"
@@ -305,8 +305,8 @@ export default function UiArchiveGallery() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.5, ease: easePremium }}
-                  src={uiDesigns[lightboxIndex].src}
-                  alt={uiDesigns[lightboxIndex].title}
+                  src={uiDesignsItems[lightboxIndex].src}
+                  alt={uiDesignsItems[lightboxIndex].title}
                   className="w-full h-full object-contain"
                 />
               </AnimatePresence>
@@ -315,10 +315,10 @@ export default function UiArchiveGallery() {
             {/* Bottom Caption (Matches layout in screenshot) */}
             <div className="absolute bottom-16 flex flex-col items-center gap-3 z-50">
                <span className="text-[#E55B13] text-[9px] font-mono uppercase tracking-[0.25em]">
-                 {uiDesigns[lightboxIndex].category}
+                 {uiDesignsItems[lightboxIndex].category}
                </span>
                <h3 className="text-white text-xl md:text-3xl font-medium tracking-tight">
-                 {uiDesigns[lightboxIndex].title}
+                 {uiDesignsItems[lightboxIndex].title}
                </h3>
             </div>
 

@@ -3,6 +3,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Maximize2 } from "lucide-react";
+import { uiDesignsItems } from "@/app/ui-archive/page";
+
 
 // --- PREMIUM EASING ---
 const easePremium = [0.76, 0, 0.24, 1] as const;
@@ -14,7 +16,7 @@ const uiDesigns = [
   { id: "03", title: "PocuhPal Expense Tracker", category: "Interface", type: "ui", src: "assets/images/UiArchive/pouchpal.png?auto=format&fit=crop&q=80&w=1600" },
 ];
 
-const totalArchiveItems = 8; // Pass the total count to show on the Explore button
+const totalArchiveItems = uiDesignsItems.length;
 
 // --- ARCHITECTURAL BACKGROUND COMPONENT ---
 const ArchitecturalGrid = () => (
@@ -133,6 +135,16 @@ export default function UiArchivePreview() {
     </section>
   );
 }
+
+
+
+
+
+
+
+
+
+
 
 // "use client";
 
