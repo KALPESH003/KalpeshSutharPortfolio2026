@@ -79,88 +79,91 @@ export default function CinematicSidebar() {
       `}</style>
 
       {/* 1. ARCHITECTURAL DRAFTING CANVAS */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, ease: easePremium }}
-        className="fixed inset-0 pointer-events-none z-[-1] hidden sm:block"
-      >
-        <div 
-          className="absolute top-0 bottom-0 left-6 w-[62px] bg-[#030303]/90"
-          style={{
-            backgroundImage: `repeating-linear-gradient(
-              -45deg, transparent, transparent 6px,
-              rgba(255, 255, 255, 0.02) 6px, rgba(255, 255, 255, 0.02) 12px
-            )`
-          }}
-        />
-        {/* Lines */}
-        <div className="absolute top-0 bottom-0 left-[24px] w-[1px] border-l border-dashed border-white/10" />
-        <div className="absolute top-0 bottom-0 left-[84px] w-[1px] border-l border-dashed border-white/10" />
-        <div className="absolute top-0 bottom-0 right-[64px] w-[1px] border-l border-dashed border-white/10" />
-        <div className="absolute left-0 right-0 top-[24px] h-[1px] border-t border-dashed border-white/10" />
-        <div className="absolute left-0 right-0 bottom-[24px] h-[1px] border-t border-dashed border-white/10" />
-        
-        {/* Registration Marks */}
-        <div className="absolute top-[24px] left-[24px] w-4 h-4 -ml-2 -mt-2 flex items-center justify-center text-white/30 text-[10px] font-mono leading-none">+</div>
-        <div className="absolute top-[24px] left-[84px] w-4 h-4 -ml-2 -mt-2 flex items-center justify-center text-white/30 text-[10px] font-mono leading-none">+</div>
-      </motion.div>
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5, ease: easePremium }}
+            className="fixed inset-0 pointer-events-none z-[-1] hidden sm:block"
+          >
+            <div 
+              className="absolute top-0 bottom-0 left-6 w-[62px] bg-[#030303]/90"
+              style={{
+                backgroundImage: `repeating-linear-gradient(
+                  -45deg, transparent, transparent 6px,
+                  rgba(255, 255, 255, 0.02) 6px, rgba(255, 255, 255, 0.02) 12px
+                )`
+              }}
+            />
+            {/* Lines */}
+            <div className="absolute top-0 bottom-0 left-[24px] w-[1px] border-l border-dashed border-white/10" />
+            <div className="absolute top-0 bottom-0 left-[84px] w-[1px] border-l border-dashed border-white/10" />
+            <div className="absolute top-0 bottom-0 right-[64px] w-[1px] border-l border-dashed border-white/10" />
+            <div className="absolute left-0 right-0 top-[24px] h-[1px] border-t border-dashed border-white/10" />
+            <div className="absolute left-0 right-0 bottom-[24px] h-[1px] border-t border-dashed border-white/10" />
+            
+            {/* Registration Marks */}
+            <div className="absolute top-[24px] left-[24px] w-4 h-4 -ml-2 -mt-2 flex items-center justify-center text-white/30 text-[10px] font-mono leading-none">+</div>
+            <div className="absolute top-[24px] left-[84px] w-4 h-4 -ml-2 -mt-2 flex items-center justify-center text-white/30 text-[10px] font-mono leading-none">+</div>
+          </motion.div>
 
-      {/* 2. MOBILE NAVIGATION */}
-      <nav className="fixed top-0 left-0 right-0 h-[72px] z-[60] flex md:hidden items-center justify-between px-6 premium-glass-panel rounded-none border-t-0 border-l-0 border-r-0 border-b-white/10 shadow-lg">
-        <motion.a 
-          href="/#home" 
-          onClick={handleLogoClick}
-          animate={{ rotate: logoRotation }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="flex-shrink-0 relative cursor-pointer outline-none"
-        >
-          <img src="/assets/images/SidebarLogo.png" alt="Logo" className="w-[32px] h-[32px] object-contain" />
-        </motion.a>
+      {/* 2. MOBILE NAVIGATION (Bottom Floating) */}
+          <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-[420px] z-[60] flex md:hidden items-center justify-between px-5 py-3 premium-glass-panel rounded-full border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.8)]">
+            
+            {/* Logo */}
+            <motion.a 
+              href="/#home" 
+              onClick={handleLogoClick}
+              animate={{ rotate: logoRotation }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="flex-shrink-0 relative cursor-pointer outline-none pl-1"
+            >
+              <img src="/assets/images/SidebarLogo.png" alt="Logo" className="w-[28px] h-[28px] object-contain" />
+            </motion.a>
 
-        <div className="flex items-center gap-4 sm:gap-6 text-white/40">
-          <a href="/#home" onClick={(e) => scrollToSection(e, 'home')} className="hover:text-white transition-colors"><Home size={20} /></a>
-          <a href="/#projects" onClick={(e) => scrollToSection(e, 'projects')} className="hover:text-white transition-colors"><Box size={20} /></a>
-          <a href="/#techstack" onClick={(e) => scrollToSection(e, 'techstack')} className="hover:text-white transition-colors"><Layers size={20} /></a>
-          <a href="/#education" onClick={(e) => scrollToSection(e, 'education')} className="hover:text-white transition-colors"><GraduationCap size={20} /></a>
-          <a href="/#library" onClick={(e) => scrollToSection(e, 'library')} className="hover:text-white transition-colors"><Library size={20} /></a>
-          <a href="/#footer" onClick={(e) => scrollToSection(e, 'footer')} className="hover:text-white transition-colors"><Mail size={20} /></a>
-        </div>
-      </nav>
+            {/* Navigation Icons */}
+            <div className="flex items-center gap-3 sm:gap-5 text-white/40 pr-1">
+              <a href="/#home" onClick={(e) => scrollToSection(e, 'home')} aria-label="Home" className="hover:text-white hover:-translate-y-1 transition-all duration-300"><Home size={18} /></a>
+              <a href="/#projects" onClick={(e) => scrollToSection(e, 'projects')} aria-label="Projects" className="hover:text-white hover:-translate-y-1 transition-all duration-300"><Box size={18} /></a>
+              <a href="/#techstack" onClick={(e) => scrollToSection(e, 'techstack')} aria-label="Tech Stack" className="hover:text-white hover:-translate-y-1 transition-all duration-300"><Layers size={18} /></a>
+              <a href="/#education" onClick={(e) => scrollToSection(e, 'education')} aria-label="Education" className="hover:text-white hover:-translate-y-1 transition-all duration-300"><GraduationCap size={18} /></a>
+              <a href="/#library" onClick={(e) => scrollToSection(e, 'library')} aria-label="Library" className="hover:text-white hover:-translate-y-1 transition-all duration-300"><Library size={18} /></a>
+              <a href="/#footer" onClick={(e) => scrollToSection(e, 'footer')} aria-label="Contact" className="hover:text-white hover:-translate-y-1 transition-all duration-300"><Mail size={18} /></a>
+            </div>
+          </nav>
 
       {/* 3. DESKTOP NAVIGATION */}
-      <aside className="fixed left-[24px] top-[24px] bottom-[24px] w-[60px] z-[60] hidden md:flex flex-col gap-2 min-[900px]:gap-4 font-['Inter',sans-serif]">
+       <aside className="fixed left-[24px] top-[24px] bottom-[24px] w-[60px] z-[60] hidden md:flex flex-col gap-2 min-[900px]:gap-4 font-['Inter',sans-serif]">
         
-        {/* TOP PANEL */}
-        <div className="flex-1 rounded-[14px] relative flex flex-col items-center py-4 min-[900px]:py-6 premium-glass-panel overflow-hidden">
-          <motion.a 
-            href="/#home" 
-            onClick={handleLogoClick}
-            animate={{ rotate: logoRotation }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="mb-4 min-[900px]:mb-8 cursor-pointer outline-none hover:scale-105 shrink-0"
-          >
-            <img src="/assets/images/SidebarLogo.png" alt="Logo" className="w-[28px] h-[28px] object-contain" />
-          </motion.a>
+          {/* TOP PANEL */}
+          <div className="flex-1 rounded-[14px] relative flex flex-col items-center py-4 min-[900px]:py-6 premium-glass-panel overflow-hidden">
+            <motion.a 
+              href="/#home" 
+              onClick={handleLogoClick}
+              animate={{ rotate: logoRotation }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="mb-4 min-[900px]:mb-8 cursor-pointer outline-none hover:scale-105 shrink-0"
+            >
+              <img src="/assets/images/SidebarLogo.png" alt="Logo" className="w-[28px] h-[28px] object-contain" />
+            </motion.a>
 
-          {/* Desktop Nav Icons */}
-          <div className="flex flex-col gap-4 min-[900px]:gap-6 text-white/40 my-auto shrink-0">
-            <a href="/#home" onClick={(e) => scrollToSection(e, 'home')} title="Home" className="hover:text-white hover:scale-110 hover:translate-x-[2px] transition-all duration-300"><Home size={18} /></a>
-            <a href="/#projects" onClick={(e) => scrollToSection(e, 'projects')} title="Projects" className="hover:text-white hover:scale-110 hover:translate-x-[2px] transition-all duration-300"><Box size={18} /></a>
-            <a href="/#techstack" onClick={(e) => scrollToSection(e, 'techstack')} title="Tech Stack" className="hover:text-white hover:scale-110 hover:translate-x-[2px] transition-all duration-300"><Layers size={18} /></a>
-            <a href="/#education" onClick={(e) => scrollToSection(e, 'education')} title="Education" className="hover:text-white hover:scale-110 hover:translate-x-[2px] transition-all duration-300"><GraduationCap size={18} /></a>
-            <a href="/#library" onClick={(e) => scrollToSection(e, 'library')} title="Personal Library" className="hover:text-white hover:scale-110 hover:translate-x-[2px] transition-all duration-300"><Library size={18} /></a>
-            <a href="/#footer" onClick={(e) => scrollToSection(e, 'footer')} title="Contact / Footer" className="hover:text-white hover:scale-110 hover:translate-x-[2px] transition-all duration-300"><Mail size={18} /></a>
-          </div>
+            {/* Desktop Nav Icons */}
+            <div className="flex flex-col gap-4 min-[900px]:gap-6 text-white/40 my-auto shrink-0">
+              <a href="/#home" onClick={(e) => scrollToSection(e, 'home')} title="Home" className="hover:text-white hover:scale-110 hover:translate-x-[2px] transition-all duration-300"><Home size={18} /></a>
+              <a href="/#projects" onClick={(e) => scrollToSection(e, 'projects')} title="Projects" className="hover:text-white hover:scale-110 hover:translate-x-[2px] transition-all duration-300"><Box size={18} /></a>
+              <a href="/#techstack" onClick={(e) => scrollToSection(e, 'techstack')} title="Tech Stack" className="hover:text-white hover:scale-110 hover:translate-x-[2px] transition-all duration-300"><Layers size={18} /></a>
+              <a href="/#education" onClick={(e) => scrollToSection(e, 'education')} title="Education" className="hover:text-white hover:scale-110 hover:translate-x-[2px] transition-all duration-300"><GraduationCap size={18} /></a>
+              <a href="/#library" onClick={(e) => scrollToSection(e, 'library')} title="Personal Library" className="hover:text-white hover:scale-110 hover:translate-x-[2px] transition-all duration-300"><Library size={18} /></a>
+              <a href="/#footer" onClick={(e) => scrollToSection(e, 'footer')} title="Contact / Footer" className="hover:text-white hover:scale-110 hover:translate-x-[2px] transition-all duration-300"><Mail size={18} /></a>
+            </div>
 
-          {/* Bottom Label */}
-          <div className="mt-auto pt-4 min-[900px]:pt-6 flex flex-col items-center w-full shrink-0 [@media(max-height:850px)]:hidden">
-            <div className="w-[18px] h-[1px] bg-white/10 mb-4 min-[900px]:mb-6" />
-            <span className="vertical-text text-[10px] tracking-[0.25em] text-white/30 font-medium whitespace-nowrap">
-              PORTFOLIO NAV
-            </span>
+            {/* Bottom Label */}
+            <div className="mt-auto pt-4 min-[900px]:pt-6 flex flex-col items-center w-full shrink-0 [@media(max-height:850px)]:hidden">
+              <div className="w-[18px] h-[1px] bg-white/10 mb-4 min-[900px]:mb-6" />
+              <span className="vertical-text text-[10px] tracking-[0.25em] text-white/30 font-medium whitespace-nowrap">
+                PORTFOLIO NAV
+              </span>
+            </div>
           </div>
-        </div>
 
         {/* BOTTOM PANEL: Scroll Indicator */}
         <div className="h-[220px] min-[900px]:h-[280px] shrink-0 rounded-[14px] relative flex flex-col items-center py-4 min-[900px]:py-6 premium-glass-panel overflow-hidden">

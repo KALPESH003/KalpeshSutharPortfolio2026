@@ -93,7 +93,7 @@ export const projects = [
     description: "Architected and deployed a complete professional web presence for an interior design firm. Handled end-to-end development from schema design to live deployment, integrating secure lead generation and optimized asset delivery.",
     tech: ['Next.js', 'React', 'MongoDB', 'Resend API', 'Netlify'],
     link: "tarunainteriors.netlify.app",
-    themeColor: "#D9C3AB",
+    themeColor: "#3b82f6",
     imageSrc: "/assets/images/projects/p1.png",
     wavePath: "M 0 10 Q 12.5 0 25 10 T 50 10 T 75 10 T 100 10 T 125 10 T 150 10 T 175 10 T 200 10 T 225 10 T 250 10 T 275 10 T 300 10 T 325 10 T 350 10 T 375 10 T 400 10"
   },
@@ -123,7 +123,7 @@ export const projects = [
     description: "A Go CLI that turns your documents into a searchable AI, entirely on your machine. No cloud. No API keys. No one else reading your data.",
     tech: ["React.js", "TypeScript", "Node.js", "Express.js", "MongoDB", "Framer Motion", "Tailwind CSS"],
     link: "https://github.com/KALPESH003/LibraFLow---Advance-Library-Management-System",
-    themeColor: "#3b82f6",
+    themeColor: "#a855f7",
     imageSrc: "/assets/images/projects/p3.png",
     wavePath: "M 0 16 L 25 4 V 16 L 50 4 V 16 L 75 4 V 16 L 100 4 V 16 L 125 4 V 16 L 150 4 V 16 L 175 4 V 16 L 200 4 V 16 L 225 4 V 16 L 250 4 V 16 L 275 4 V 16 L 300 4 V 16 L 325 4 V 16 L 350 4 V 16 L 375 4 V 16 L 400 4 V 16"
   },
@@ -138,7 +138,7 @@ export const projects = [
     description: "A full-stack certificate generation and verification platform designed for educational institutions, events, and organizations. Features dynamic certificate creation, PDF export, QR-code based verification, secure credential management, and automated bulk certificate issuance.",
     tech: ["Node.js", "Express.js", "MongoDB", "Puppeteer", "JavaScript", "QR Code API"],
     link: "https://github.com/KALPESH003/CertiGen",
-    themeColor: "#a855f7",
+    themeColor: "#D9C3AB",
     imageSrc: "/assets/images/projects/p4.png",
     wavePath: "M 0 10 H 15 L 20 4 L 25 16 L 30 10 H 65 L 70 4 L 75 16 L 80 10 H 115 L 120 4 L 125 16 L 130 10 H 165 L 170 4 L 175 16 L 180 10 H 215 L 220 4 L 225 16 L 230 10 H 265 L 270 4 L 275 16 L 280 10 H 315 L 320 4 L 325 16 L 330 10 H 365 L 370 4 L 375 16 L 380 10 H 400"
   },

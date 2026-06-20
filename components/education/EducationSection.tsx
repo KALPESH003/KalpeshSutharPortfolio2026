@@ -17,7 +17,7 @@ const educationData: EducationSectionItem[] = [
       "Recently completed an advanced postgraduate program focused on secure computing, modern software systems, artificial intelligence, enterprise technologies, and scalable digital solutions.",
     skills: ["Artificial Intelligence", "Cybersecurity", "Platform Technologies", "Network Security", "Software Engineering", "Systems Design"],
     achievements: ["Advanced software engineering studies", "Cybersecurity specialization", "Research-driven coursework", "Enterprise system design"],
-    accent: "#D6B370",
+    accent: "#4F8CFF",
   },
   {
     id: "bsc",
@@ -30,7 +30,7 @@ const educationData: EducationSectionItem[] = [
       "Built a strong foundation in computational thinking, software development principles, algorithms, database systems, and modern programming practices.",
     skills: ["Programming", "Algorithms", "Data Structures", "Databases", "Computer Networks", "OOP"],
     achievements: ["Strong programming foundation", "Database management expertise", "Algorithmic problem solving", "Software development practices"],
-    accent: "#4F8CFF",
+    accent: "#D95C93",
   },
   {
     id: "industry",
@@ -43,7 +43,7 @@ const educationData: EducationSectionItem[] = [
       "Completed industry-led virtual experience programs focused on software engineering, cloud architecture, cybersecurity, systems analysis, and enterprise technology practices.",
     skills: ["AWS Architecture", "Cybersecurity", "Code Analysis", "SDLC", "System Optimization", "Technical Documentation"],
     achievements: ["Designed scalable cloud architectures", "Applied SDLC methodologies", "Performed debugging and code analysis", "Conducted cybersecurity assessments", "Produced technical documentation"],
-    accent: "#D95C93",
+    accent: "#D6B370",
   },
 ];
 

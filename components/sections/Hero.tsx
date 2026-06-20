@@ -132,7 +132,7 @@ useEffect(() => {
         .delay-400 { animation-delay: 0.4s; }
       `}</style>
 
-      <div className="relative min-h-[100vh] bg-[#000000] text-white font-['Inter',sans-serif] overflow-x-hidden">
+      <div className="relative min-h-[100dvh] bg-[#000000] text-white font-['Inter',sans-serif] overflow-x-hidden">
         {/* ==================================================== */}
         {/* MAIN HERO SECTION (Shifted Right for Sidebar)        */}
         {/* ==================================================== */}

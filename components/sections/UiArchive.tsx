@@ -67,7 +67,7 @@ export default function UiArchivePreview() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: easePremium }}
-        className="relative z-10 py-24 pl-[32px] md:pl-[120px] pr-[32px] md:pr-[96px] max-w-[1800px] mx-auto"
+        className="relative z-10 w-full py-24 px-6 md:pl-[100px] md:pr-12 max-w-7xl mx-auto"
       >
         {/* Section Header */}
         <div className="flex items-center gap-4 mb-12">
@@ -116,12 +116,12 @@ export default function UiArchivePreview() {
               style={{ backgroundImage: `repeating-linear-gradient(-45deg, transparent, transparent 10px, #ffffff 10px, #ffffff 20px)` }}
             />
             
-            <div className="w-[72px] h-[72px] rounded-full border border-white/10 group-hover:border-[#E55B13]/50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 relative z-10">
-              <Maximize2 className="w-5 h-5 text-white/50 group-hover:text-[#E55B13] transition-colors duration-500" />
+            <div className="w-[72px] h-[72px] rounded-full border border-white/10 group-hover:border-[#0062ff]/50 flex items-center justify-center transition-all duration-500 group-hover:scale-110 relative z-10">
+              <Maximize2 className="w-5 h-5 text-white/50 group-hover:text-[#0062ff] transition-colors duration-500" />
             </div>
             
             <div className="flex flex-col items-center gap-3 relative z-10">
-              <span className="text-[13px] font-mono tracking-[0.25em] uppercase text-white font-bold group-hover:text-[#E55B13] transition-colors duration-500">
+              <span className="text-[13px] font-mono tracking-[0.25em] uppercase text-white font-bold group-hover:text-[#0062ff] transition-colors duration-500">
                 Explore Archive
               </span>
               <span className="text-[11px] text-white/40 font-sans">

@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useCallback } from "react";
 
 const COLORS = {
-  accent: "#FF5500",
+  accent: "#0062ff",
   tick: "#222222",
   tickMajor: "#444444",
 };
@@ -236,19 +236,7 @@ export default function MinimalistScrollIndicator() {
   return (
     <div
       ref={wrapperRef}
-      className="
-        fixed
-        right-0
-        top-0
-        h-screen
-        w-14
-        z-50
-        flex
-        justify-end
-        font-sans
-        pointer-events-auto
-        will-change-[opacity]
-      "
+      className="fixed right-0 top-0 h-screen w-14 z-50 flex justify-end font-sans pointer-events-auto will-change-[opacity]"
       style={{
         opacity: 0,
       }}
@@ -294,15 +282,7 @@ export default function MinimalistScrollIndicator() {
 
         <div
           ref={thumbRef}
-          className="
-            absolute
-            right-0
-            top-0
-            w-full
-            cursor-grab
-            active:cursor-grabbing
-            will-change-transform
-          "
+          className="absolute right-0 top-0 w-full cursor-grab active:cursor-grabbing will-change-transform"
           style={{
             height: `${THUMB_HEIGHT}px`,
             touchAction: "none",
@@ -316,15 +296,7 @@ export default function MinimalistScrollIndicator() {
             {/* ACCENT TRIANGLE */}
 
             <div
-              className="
-                absolute
-                right-[3px]
-                w-0
-                h-0
-                border-y-[4px]
-                border-y-transparent
-                border-l-[6px]
-              "
+              className="absolute right-[3px] w-0 h-0 border-y-[4px] border-y-transparent border-l-[6px]"
               style={{
                 borderLeftColor:
                   COLORS.accent,
@@ -335,18 +307,7 @@ export default function MinimalistScrollIndicator() {
 
             <span
               ref={readoutRef}
-              className="
-                absolute
-                right-[4px]
-                top-1/2
-                -translate-y-1/2
-                -rotate-90
-                origin-center
-                font-mono
-                text-[10px]
-                tracking-[0.24em]
-                tabular-nums
-              "
+              className="absolute right-[4px] top-1/2 -translate-y-1/2 -rotate-90 origin-center font-mono text-[10px] tracking-[0.24em] tabular-nums"
               style={{
                 color: COLORS.accent,
                 fontWeight: 500,

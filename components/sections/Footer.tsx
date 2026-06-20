@@ -33,11 +33,11 @@ const MagneticPill = ({ email }: { email: string }) => {
       style={{ x: smoothX, y: smoothY }}
       className="group relative inline-flex items-center gap-4 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-colors duration-500 overflow-hidden"
     >
-      <div className="absolute inset-0 translate-y-full bg-[#F16001] group-hover:translate-y-0 transition-transform duration-700 ease-[0.76,0,0.24,1] rounded-full" />
+      <div className="absolute inset-0 translate-y-full bg-[#0062ff] group-hover:translate-y-0 transition-transform duration-700 ease-[0.76,0,0.24,1] rounded-full" />
       <span className="relative z-10 text-sm md:text-base font-mono text-white group-hover:text-black transition-colors duration-500">
         {email}
       </span>
-      <div className="relative z-10 w-2 h-2 rounded-full bg-[#F16001] group-hover:bg-black transition-colors duration-500 animate-pulse" />
+      <div className="relative z-10 w-2 h-2 rounded-full bg-[#0062ff] group-hover:bg-black transition-colors duration-500 animate-pulse" />
     </motion.a>
   );
 };
@@ -55,7 +55,7 @@ const CleanLink = ({ title, href, isInternal = false }: { title: string; href: s
       whileHover={{ y: "-100%" }}
       transition={{ duration: 0.5, ease: easePremium }}
     >
-      <span className="text-base md:text-lg font-mono text-white/70 group-hover:text-[#F16001] transition-colors duration-300">
+      <span className="text-base md:text-lg font-mono text-white/70 group-hover:text-[#0062ff] transition-colors duration-300">
         {title}
       </span>
       <span className="absolute top-full left-0 text-base md:text-lg font-mono text-white">
@@ -227,10 +227,10 @@ export default function Footer() {
       <div className="absolute right-0 top-[-5%] h-[110%] w-[1px] border-l border-dashed border-white/10" />
         
       {/* Precision Registration Intersections (+) */}
-      <div className="absolute top-[64px] md:top-[81px] left-[32px] md:left-[24px] w-4 h-4 -ml-2 -mt-2 flex items-center justify-center text-[#F16001]/70 text-[10px] font-mono leading-none">+</div>
-      <div className="absolute top-[64px] md:top-[81px] right-[32px] md:right-[64px] w-4 h-4 -mr-2 -mt-2 flex items-center justify-center text-[#F16001]/70 text-[10px] font-mono leading-none">+</div>
-      <div className="absolute bottom-[24px] left-[32px] md:left-[24px] w-4 h-4 -ml-2 -mb-2 flex items-center justify-center text-[#F16001]/70 text-[10px] font-mono leading-none">+</div>
-      <div className="absolute bottom-[24px] right-[32px] md:right-[64px] w-4 h-4 -mr-2 -mb-2 flex items-center justify-center text-[#F16001]/70 text-[10px] font-mono leading-none">+</div>
+      <div className="absolute top-[64px] md:top-[81px] left-[32px] md:left-[24px] w-4 h-4 -ml-2 -mt-2 flex items-center justify-center text-[#0062ff]/70 text-[10px] font-mono leading-none">+</div>
+      <div className="absolute top-[64px] md:top-[81px] right-[32px] md:right-[64px] w-4 h-4 -mr-2 -mt-2 flex items-center justify-center text-[#0062ff]/70 text-[10px] font-mono leading-none">+</div>
+      <div className="absolute bottom-[24px] left-[32px] md:left-[24px] w-4 h-4 -ml-2 -mb-2 flex items-center justify-center text-[#0062ff]/70 text-[10px] font-mono leading-none">+</div>
+      <div className="absolute bottom-[24px] right-[32px] md:right-[64px] w-4 h-4 -mr-2 -mb-2 flex items-center justify-center text-[#0062ff]/70 text-[10px] font-mono leading-none">+</div>
 
       {/* Main Glass Island */}
       <div className="relative z-20 w-full max-w-7xl">
@@ -246,12 +246,12 @@ export default function Footer() {
             <motion.div 
               animate={{ rotate: 360, scale: [1, 1.2, 1] }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute -top-[30%] -left-[10%] w-[70vw] h-[70vw] max-w-[800px] max-h-[800px] bg-[#F16001]/25 rounded-full blur-[80px]"
+              className="absolute -top-[30%] -left-[10%] w-[70vw] h-[70vw] max-w-[800px] max-h-[800px] bg-[#0062ff]/25 rounded-full blur-[80px]"
             />
             <motion.div 
               animate={{ rotate: -360, scale: [1, 1.5, 1] }}
               transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              className="absolute -bottom-[30%] -right-[10%] w-[60vw] h-[60vw] max-w-[700px] max-h-[700px] bg-[#C10801]/20 rounded-full blur-[100px]"
+              className="absolute -bottom-[30%] -right-[10%] w-[60vw] h-[60vw] max-w-[700px] max-h-[700px] bg-[#0062ff]/20 rounded-full blur-[100px]"
             />
           </div>
 
@@ -281,7 +281,7 @@ export default function Footer() {
             <div className="flex flex-col max-w-3xl">
               <h2 className="text-[clamp(40px,6vw,80px)] font-sans font-medium tracking-tight text-white leading-[1.1] mb-8">
                 Let's create an <br className="hidden md:block"/>
-                <span className="text-[#F16001] italic pr-2">exceptional</span> digital experience.
+                <span className="text-[#0062ff] italic pr-2">exceptional</span> digital experience.
               </h2>
               <MagneticPill email={personalInfo?.email || "hello@kalpeshsuthar.com"} />
             </div>
@@ -300,7 +300,7 @@ export default function Footer() {
               <span className="text-[10px] font-mono tracking-[0.2em] text-white/40 uppercase">Location</span>
               <span className="text-base md:text-lg font-mono text-white/90">{personalInfo?.location || "Vadodara, IN"}</span>
               <div className="flex items-center gap-2 mt-auto">
-                <span className="text-xs font-mono text-[#F16001]">{time ? formatTime(time) : "00:00"}</span>
+                <span className="text-xs font-mono text-[#0062ff]">{time ? formatTime(time) : "00:00"}</span>
                 <span className="text-[10px] font-mono text-white/40 uppercase">IST</span>
               </div>
             </div>

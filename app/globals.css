@@ -49,6 +49,8 @@ html.lenis, html.lenis body {
 }
   body {
     @apply bg-[var(--gray-1)] text-[var(--gray-12)] antialiased selection:bg-[var(--accent)] selection:text-white;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 }
 

@@ -57,7 +57,7 @@ export default function TechStack() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="techstack" className="relative min-h-[60vh] py-16 md:py-20 bg-[#020202] overflow-hidden flex items-center justify-center">
+    <section id="techstack" className="relative min-h-[60vh] py-24 md:py-32 bg-[#020202] overflow-hidden flex items-center justify-center">
       {/* GLOBAL INFRASTRUCTURE */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-0 bottom-0 left-[32px] md:left-[23px] w-[1px] border-l border-dashed border-white/10" />
@@ -80,7 +80,7 @@ export default function TechStack() {
         </div>
       </div>
 
-      <div className="max-w-6xl w-full mx-auto px-6 md:px-12 pb-16 relative z-20" ref={containerRef}>
+      <div className="max-w-6xl w-full mx-auto px-6 md:pl-[100px] md:pr-12 pb-16 relative z-20" ref={containerRef}>
         
         <div className="absolute top-0 left-4 w-4 h-[1px] bg-white/20" />
         <div className="absolute top-0 left-4 w-[1px] h-4 bg-white/20" />
@@ -96,8 +96,8 @@ export default function TechStack() {
             className="flex flex-col gap-4"
           >
             <div className="flex items-center gap-3">
-              <div className="w-1.5 h-1.5 bg-[#F16001] rounded-full animate-pulse" />
-              <span className="text-[#F16001] font-mono text-[10px] uppercase tracking-[0.3em]">
+              <div className="w-1.5 h-1.5 bg-[#014df1] rounded-full animate-pulse" />
+              <span className="text-[#0062ff] font-mono text-[10px] uppercase tracking-[0.3em]">
                 System Architecture
               </span>
             </div>
@@ -141,7 +141,7 @@ export default function TechStack() {
                   relative flex flex-col md:flex-row md:items-center cursor-crosshair overflow-hidden
                   border backdrop-blur-md transition-all duration-500 rounded-sm
                   ${isHovered 
-                    ? "border-[#F16001]/40 bg-[#F16001]/10 px-6 py-4 md:py-3 shadow-[0_0_20px_rgba(120,120,120,0.10)]" 
+                    ? "border-[#0062ff]/40 bg-[#0062ff]/10 px-6 py-4 md:py-3 shadow-[0_0_20px_rgba(120,120,120,0.10)]" 
                     : "border-white/5 bg-white/[0.02] hover:bg-white/[0.04] px-4 py-3"}
                 `}
               >
@@ -151,7 +151,7 @@ export default function TechStack() {
                       initial={{ opacity: 0, width: 0, marginRight: 0 }}
                       animate={{ opacity: 1, width: "auto", marginRight: 16 }}
                       exit={{ opacity: 0, width: 0, marginRight: 0 }}
-                      className="hidden md:block font-mono text-[8px] text-[#F16001] tracking-[0.2em] uppercase whitespace-nowrap"
+                      className="hidden md:block font-mono text-[8px] text-[#0062ff] tracking-[0.2em] uppercase whitespace-nowrap"
                     >
                       {tech.category} //
                     </motion.span>
@@ -163,7 +163,7 @@ export default function TechStack() {
                   animate={{ opacity: isOthersHovered ? 0.2 : 1, color: isHovered ? "#ffffff" : "#A1A1AA" }}
                   className="font-mono text-sm md:text-base font-medium tracking-[0.1em] uppercase select-none whitespace-nowrap flex items-center gap-2"
                 >
-                  {isHovered && <span className="text-[#F16001]" aria-hidden="true">&gt;</span>}
+                  {isHovered && <span className="text-[#0062ff]" aria-hidden="true">&gt;</span>}
                   <CipherText text={tech.name.toUpperCase()} isHovered={isHovered} />
                 </motion.span>
 
@@ -181,7 +181,7 @@ export default function TechStack() {
                       </span>
                       <motion.div 
                         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
-                        className="w-1.5 h-1.5 bg-[#F16001] rounded-none" 
+                        className="w-1.5 h-1.5 bg-[#0062ff] rounded-none" 
                       />
                     </motion.div>
                   )}
