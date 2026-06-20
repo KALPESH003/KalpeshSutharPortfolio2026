@@ -1,8 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Terminal } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Hero() {
   const [scrollProgress, setScrollProgress] = useState(0);
+// loading dots...
+  const [dots, setDots] = useState(".");
+
+  // Animated loading dots
+useEffect(() => {
+  const frames = [" ", ".", "..", "...", " "];
+  let index = 0;
+
+  const interval = setInterval(() => {
+    setDots(frames[index]);
+    index = (index + 1) % frames.length;
+  }, 500);
+
+  return () => clearInterval(interval);
+}, []);
 
   // Scroll Progress Tracking for the Sidebar Indicator (Optional here, but kept for consistency)
   useEffect(() => {
@@ -32,8 +49,8 @@ export default function Hero() {
         .liquid-glass {
           background: rgba(255, 255, 255, 0.01);
           background-blend-mode: luminosity;
-          backdrop-filter: blur(4px);
-          -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
           box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
           position: relative;
           border-radius: 20px;
@@ -64,22 +81,13 @@ export default function Hero() {
           overflow: hidden;
         }
 
-        /* Cinematic Scanning Motion Effect */
-        @keyframes cyber-scan {
-          0% { transform: translateY(-100%); opacity: 0; }
-          10% { opacity: 0.8; }
-          90% { opacity: 0.8; }
-          100% { transform: translateY(400%); opacity: 0; }
-        }
-        .scanner-light {
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 80px;
-          background: linear-gradient(to bottom, transparent, rgba(255, 107, 0, 0.15), transparent);
-          animation: cyber-scan 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-          pointer-events: none;
-          z-index: 0;
-        }
+        /* Continuous Levitation for Glass Cards */
+          @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+          }
+          .animate-float { animation: float 6s ease-in-out infinite; }
+          .animate-float-delayed { animation: float 7s ease-in-out 2s infinite; }
 
         /* Vertical Text Styling */
         .vertical-text {
@@ -112,12 +120,15 @@ export default function Hero() {
           animation: scrollMotion 2s cubic-bezier(0.7, 0, 0.3, 1) infinite;
         }
 
-        /* Cinematic Entrance Animations for the indicator */
+       /* Cinematic Entrance Animations */
         @keyframes revealUp {
-          from { opacity: 0; transform: translateY(30px); filter: blur(4px); }
+          from { opacity: 0; transform: translateY(40px); filter: blur(8px); }
           to { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
         .animate-reveal { animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
         .delay-400 { animation-delay: 0.4s; }
       `}</style>
 
@@ -149,6 +160,7 @@ export default function Hero() {
           {/* <div className="absolute top-[24px] left-[24px] w-4 h-4 -ml-2 -mt-2 flex items-center justify-center text-white/30 text-[10px] font-mono leading-none">+</div>
           <div className="absolute bottom-[24px] left-[24px] w-4 h-4 -ml-2 -mb-2 flex items-center justify-center text-white/30 text-[10px] font-mono leading-none">+</div> */}
         </div>
+
 
         {/* We use pl-0 md:pl-[84px] lg:pl-[100px] to cut out space for the sidebar */}
         <div className="relative min-h-screen md:pl-[84px] lg:pl-[100px] transition-all duration-500">
@@ -188,63 +200,117 @@ export default function Hero() {
           </div>
 
           {/* Grid System (Visible on Desktop) */}
-          <div className="absolute inset-0 z-[2] hidden lg:block pointer-events-none md:pl-[100px]">
-            <div className="absolute left-1/4 top-0 bottom-0 w-px bg-white/5" />
-            <div className="absolute left-2/4 top-0 bottom-0 w-px bg-white/5" />
-            <div className="absolute left-3/4 top-0 bottom-0 w-px bg-white/5" />
+          <div className="absolute top-0 bottom-0 left-[0px] md:left-[84px] lg:left-[100px] right-0 z-[2] hidden lg:block pointer-events-none">
+            <div className="relative w-full h-full">
+              <div className="absolute left-1/4 top-0 bottom-0 w-px bg-white/5" />
+              <div className="absolute left-2/4 top-0 bottom-0 w-px bg-white/5" />
+              <div className="absolute left-3/4 top-0 bottom-0 w-px bg-white/5" />
+            </div>
           </div>
 
           {/* Global Navigation - Minimal Header */}
-          <header className="absolute top-0 w-full z-50 px-6 md:px-12 lg:px-24 py-8 flex justify-between items-center pr-6 md:pr-12">
-            <div className="text-sm font-mono tracking-tighter relative z-10">
-              Kalpesh K. Suthar<span className="text-[#F16001]">.</span>
-            </div>
+          <header className="absolute top-0 left-[-3vw] w-full z-50 px-6 md:px-12 lg:px-24 py-8 flex justify-between items-center pr-6 md:pr-12">
+              <div className="text-sm font-mono tracking-tighter relative z-10 flex items-center gap-2 text-white/80">
+                <Terminal size={14} className="text-[#0077ff]" />
+                Kalpesh K. Suthar
+                <span className="text-[#0185f1] ml-1">
+                  {dots}
+                </span>
+              </div>
           </header>
+              
+              {/* The Liquid Glass Card
+              <div className="hidden xl:block absolute left-[-3vw] top-3/6 -translate-y-1/4 z-20 animate-float">
+                  <div className="liquid-glass w-[200px] h-[220px] p-7 -translate-y-[50px] flex flex-col justify-between mb-2 hover:scale-105 hover:-translate-y-[55px] transition-transform duration-500 cursor-default">
+                    <div className="text-[12px] text-white/50 tracking-widest font-mono font-medium  flex items-center gap-2">
+                      [ EST. 2025 ]
+                    </div>
+                    <div>
+                      <h3 className="text-[18px] leading-[1.2] font-medium mb-3">
+                        Creative <span className="font-['Instrument_Serif'] italic  text-[22px] font-normal tracking-wide text-[#b1b1b1]">Technology</span> Studio
+                      </h3>
+                      <p className="text-[11px] text-white/40 font-mono leading-relaxed uppercase tracking-wider border-t border-white/10 pt-3 mt-3">
+                        Built with Code. Designed with Vision.
+                      </p>
+                    </div>
+                  </div>
+              </div> */}
+
+               {/* Under Construction: REMOVE AFTER FULLY UPDATED THINGSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS */}
+             <div className="hidden xl:block absolute left-[2%] 2xl:left-[4%] top-[15%] z-20 animate-float pointer-events-auto">
+                  <div className="liquid-glass relative w-[220px] h-[240px] p-6 flex flex-col justify-between overflow-hidden group hover:scale-105 hover:bg-white/5 transition-all duration-500 cursor-default">
+                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                      <div className="absolute inset-x-0 -top-20 h-20 bg-gradient-to-b from-transparent via-[#ff6b00]/15 to-transparent" />
+                    </div>
+                    <div className="relative z-10 flex flex-col h-full justify-between">
+                      <div>
+                        <span className="text-[10px] uppercase tracking-[0.35em] text-[#ff0000] font-mono bg-[#ff3333]/10 px-2 py-1 rounded-sm">
+                          SYS_UPDATE
+                        </span>
+                      </div>
+                      <div>
+                        <h3 className="text-[22px] font-bold leading-[1.05] tracking-tight">
+                          New Work <br /> Being Curated
+                        </h3>
+                        <p className="mt-4 text-[11px] leading-relaxed text-white/45 font-mono">
+                          Experiences, systems and digital artifacts are currently entering the archive.
+                        </p>
+                      </div>
+                      <div className="flex items-center justify-between border-t border-white/10 pt-4 mt-2">
+                        <span className="text-[10px] uppercase tracking-[0.25em] text-white/30">
+                          Archive Expanding
+                        </span>
+                        <div className="w-3 h-3 rounded-full bg-[#ff0000] animate-pulse" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {/* -------------------------------------------------------------------------------------------------------------------------------- */}     
+
 
           {/* Main Hero Content */}
-          <main className="relative z-10 flex flex-col justify-center min-h-screen px-6 md:px-12 lg:px-20 pt-20">
-            <div className="max-w-4xl">
-              
-              {/* The Liquid Glass Card */}
-              <div className="liquid-glass w-[200px] h-[200px] p-6 -translate-y-[50px] flex flex-col justify-between mb-2 hover:-translate-y-[55px] transition-transform duration-500">
-                <div className="text-[14px] text-white/50 tracking-widest font-mono font-medium">
-                  [ EST. 2025 ]
-                </div>
-                <div>
-                  <h3 className="text-[18px] leading-[1.2] font-medium mb-3">
-                    Creative <span className="font-['Instrument_Serif'] italic text-[22px] font-normal tracking-wide text-[#ff6b00]">Technology</span> Studio
-                  </h3>
-                  <p className="text-[11px] text-white/40 font-mono leading-relaxed uppercase tracking-wider">
-                    Built with Code. Designed with Vision.
-                  </p>
-                </div>
-              </div>
+          <main className="relative z-10 flex flex-col justify-center items-center min-h-screen px-6 md:px-12 lg:px-20 pt-20">     
+
+           <div className="max-w-6xl text-center flex flex-col items-center">
 
               {/* Hero Content & Typography */}
-              <span className="font-['Plus_Jakarta_Sans'] font-bold text-[11px] text-[#ff6b00] tracking-[0.2em] uppercase mb-6 block drop-shadow-md">
-                Creative Technologist
+              <span className="animate-reveal font-['Plus_Jakarta_Sans'] font-bold text-[11px] md:text-[13px] text-[#0077ff] tracking-[0.3em] uppercase mb-6 block drop-shadow-md border border-[#0077ff]/30 px-4 py-1.5 rounded-full bg-[#0077ff]/5 backdrop-blur-sm">
+                 Creative Technologist
               </span>
               
-              <h1 className="font-extrabold text-[40px] md:text-[56px] lg:text-[72px] uppercase tracking-tighter leading-[1.05] mb-8 drop-shadow-lg">
-                BUILDING THE WEB  <br /> BEYOND EXPECTATIONS<span className="text-[#ff6b00]">.</span>
+              <h1 className="font-extrabold text-[50px] sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[110px] 2xl:text-[130px] uppercase tracking-[-0.06em] leading-[0.92] mb-10 drop-shadow-[0_0_40px_rgba(0,0,0,0.8)] text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/60  ">
+                Crafting Digital <br/> Experiences<span className="text-[#0077ff] text-[80px]">.</span>
               </h1>
-              
-              <p className="text-[14px] text-white/70 max-w-[512px] leading-relaxed mb-12 font-mono">
+     
+              <p className="text-[14px] md:text-[15px] text-white/70 max-w-[512px] leading-relaxed mb-12 font-mono text-center">
                 Master in-demand coding skills with our immersive curriculum. Build real-world projects, connect with mentors, and step confidently into your future in tech.
               </p>
-              
+            <div className="animate-reveal delay-300 flex flex-col sm:flex-row items-center justify-center gap-6">
+              <Link 
+                href="/ui-archive"
+                className="btn-glow group relative flex items-center justify-center gap-3 bg-white text-black px-8 py-4 rounded-full font-bold text-[13px] uppercase tracking-[0.1em] hover:bg-gray-100 transition-colors pointer-events-auto"
+              >
+                <span className="w-4 h-4 invisible block" />
+                View Archive
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
             </div>
           </main>
           
            {/* Central "Scroll to Explore" Indicator */}
-          <div className="absolute bottom-[40px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 animate-reveal delay-400 z-20">
-            <span className="text-[9px] font-['Space_Mono'] uppercase tracking-[0.3em] text-white/40">
-              Scroll to Explore
-            </span>
-            <div className="w-[1px] h-[50px] bg-white/10 relative overflow-hidden">
-              <div className="w-full h-1/3 bg-white/60 absolute top-0 left-0 scroll-indicator-line" />
+          <div className="absolute bottom-[40px] left-[0px] md:left-[84px] lg:left-[100px] right-0 z-20 pointer-events-none">
+            <div className="relative w-full flex flex-col items-center gap-4 animate-reveal delay-400">
+              <span className="text-[9px] font-['Space_Mono'] uppercase tracking-[0.3em] text-white/40">
+                Scroll to Explore
+              </span>
+              <div className="w-[2px] h-[50px] bg-white/10 relative overflow-hidden">
+                <div className="w-full h-1/3 bg-white/60 absolute top-0 left-0 scroll-indicator-line" />
+              </div>
             </div>
           </div>
+
         </div>
         
         {/* Extra height added to body just to demonstrate the active scroll tracking */}
@@ -252,3 +318,4 @@ export default function Hero() {
     </>
   );
 }
+

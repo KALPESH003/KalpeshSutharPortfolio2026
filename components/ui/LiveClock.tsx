@@ -55,7 +55,7 @@ export default function LiveClock() {
         <motion.div 
           animate={{ opacity: [1, 1, 0, 0] }}
           transition={{ duration: 1, repeat: Infinity, times: [0, 0.5, 0.5, 1] }}
-          className="w-1.5 h-1.5 bg-[#F16001]" 
+          className="w-1.5 h-1.5 bg-[#00ff22]" 
         />
         <span className="text-[7px] md:text-[8px] font-mono tracking-[0.3em] text-[#D9C3AB] uppercase font-bold">
           Local Time

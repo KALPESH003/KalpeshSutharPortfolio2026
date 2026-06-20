@@ -265,6 +265,7 @@ export default function UiArchiveGallery() {
               <button 
               type="button"
                 onClick={() => setLightboxIndex(null)}
+                aria-label="Close lightbox"
                 className="absolute right-4 md:right-25 top-20 md:top-44 -translate-x-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-white/50 hover:text-[#E55B13] bg-[#020202] border border-white/10 hover:border-[#E55B13] rounded-full transition-all duration-300 backdrop-blur-md z-[100] group"
               >
                 <X className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -273,6 +274,7 @@ export default function UiArchiveGallery() {
 
             {/* Navigation Arrows */}
             <button type="button"
+            aria-label="Previous image"
             onClick={() =>
               setLightboxIndex((prev) => {
                 if (prev === null) return 0;
@@ -285,6 +287,7 @@ export default function UiArchiveGallery() {
             </button>
             
             <button type="button"
+            aria-label="Next image"
              onClick={() =>
               setLightboxIndex((prev) => {
                 if (prev === null) return 0;

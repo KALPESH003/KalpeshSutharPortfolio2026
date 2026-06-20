@@ -129,22 +129,22 @@ export default function CinematicSidebar() {
       </nav>
 
       {/* 3. DESKTOP NAVIGATION */}
-      <aside className="fixed left-[24px] top-[24px] bottom-[24px] w-[60px] z-[60] hidden md:flex flex-col gap-4 font-['Inter',sans-serif]">
+      <aside className="fixed left-[24px] top-[24px] bottom-[24px] w-[60px] z-[60] hidden md:flex flex-col gap-2 min-[900px]:gap-4 font-['Inter',sans-serif]">
         
         {/* TOP PANEL */}
-        <div className="flex-1 rounded-[14px] relative flex flex-col items-center py-6 premium-glass-panel">
+        <div className="flex-1 rounded-[14px] relative flex flex-col items-center py-4 min-[900px]:py-6 premium-glass-panel overflow-hidden">
           <motion.a 
             href="/#home" 
             onClick={handleLogoClick}
             animate={{ rotate: logoRotation }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="mb-10 cursor-pointer outline-none hover:scale-105"
+            className="mb-4 min-[900px]:mb-8 cursor-pointer outline-none hover:scale-105 shrink-0"
           >
             <img src="/assets/images/SidebarLogo.png" alt="Logo" className="w-[28px] h-[28px] object-contain" />
           </motion.a>
 
           {/* Desktop Nav Icons */}
-          <div className="flex flex-col gap-8 text-white/40">
+          <div className="flex flex-col gap-4 min-[900px]:gap-6 text-white/40 my-auto shrink-0">
             <a href="/#home" onClick={(e) => scrollToSection(e, 'home')} title="Home" className="hover:text-white hover:scale-110 hover:translate-x-[2px] transition-all duration-300"><Home size={18} /></a>
             <a href="/#projects" onClick={(e) => scrollToSection(e, 'projects')} title="Projects" className="hover:text-white hover:scale-110 hover:translate-x-[2px] transition-all duration-300"><Box size={18} /></a>
             <a href="/#techstack" onClick={(e) => scrollToSection(e, 'techstack')} title="Tech Stack" className="hover:text-white hover:scale-110 hover:translate-x-[2px] transition-all duration-300"><Layers size={18} /></a>
@@ -154,8 +154,8 @@ export default function CinematicSidebar() {
           </div>
 
           {/* Bottom Label */}
-          <div className="mt-auto pt-6 flex flex-col items-center w-full">
-            <div className="w-[18px] h-[1px] bg-white/10 mb-6" />
+          <div className="mt-auto pt-4 min-[900px]:pt-6 flex flex-col items-center w-full shrink-0 [@media(max-height:850px)]:hidden">
+            <div className="w-[18px] h-[1px] bg-white/10 mb-4 min-[900px]:mb-6" />
             <span className="vertical-text text-[10px] tracking-[0.25em] text-white/30 font-medium whitespace-nowrap">
               PORTFOLIO NAV
             </span>
@@ -163,33 +163,32 @@ export default function CinematicSidebar() {
         </div>
 
         {/* BOTTOM PANEL: Scroll Indicator */}
-        <div className="h-[280px] rounded-[14px] relative flex flex-col items-center py-6 premium-glass-panel overflow-hidden">
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 bottom-7 w-[40px] rounded-[4px] bg-[#1a1a1a] border border-white/5 overflow-hidden" />
-          <div className="absolute bottom-20 w-[18px] h-[1px] bg-white/10 z-0" />
+        <div className="h-[220px] min-[900px]:h-[280px] shrink-0 rounded-[14px] relative flex flex-col items-center py-4 min-[900px]:py-6 premium-glass-panel overflow-hidden">
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 bottom-5 min-[900px]:bottom-7 w-[40px] rounded-[4px] bg-[#1a1a1a] border border-white/5 overflow-hidden" />
+          <div className="absolute bottom-[64px] min-[900px]:bottom-20 w-[18px] h-[1px] bg-white/10 z-0" />
 
           {/* Scroll Track */}
-          <div className="absolute top-5 bottom-17 left-1/2 -translate-x-1/2 w-[32px] flex justify-center z-0 overflow-hidden">
-            <span className="absolute inset-0 flex items-center justify-center vertical-text text-[10px] tracking-[0.25em] text-white/30 font-medium whitespace-nowrap pointer-events-none">
-              SCROLL INDICATOR
+          <div className="absolute top-4 min-[900px]:top-5 bottom-[64px] min-[900px]:bottom-[68px] left-1/2 -translate-x-1/2 w-[32px] flex justify-center z-0 overflow-hidden">
+            <span className="absolute inset-0 flex items-center justify-center vertical-text text-[9px] min-[900px]:text-[10px] tracking-[0.2em] min-[900px]:tracking-[0.25em] text-white/30 font-medium whitespace-nowrap pointer-events-none">
+                SCROLL INDICATOR
             </span>
             <motion.div className="absolute inset-0 bg-white flex justify-center items-center rounded-[4px]" style={{ clipPath }}>
-              <span className="absolute inset-0 flex items-center justify-center vertical-text text-[10px] tracking-[0.25em] text-[#151515] font-bold whitespace-nowrap pointer-events-none">
+              <span className="absolute inset-0 flex items-center justify-center vertical-text text-[9px] min-[900px]:text-[10px] tracking-[0.2em] min-[900px]:tracking-[0.25em] text-[#151515] font-bold whitespace-nowrap pointer-events-none">
                 SCROLL INDICATOR
               </span>
             </motion.div>
           </div>
 
           <div className="flex-1" />
-
-          {/* Elevate Up Button */}
-          <button 
-            onClick={(e) => scrollToSection(e as any, 'home')}
-            className="w-10 h-10 bg-[#121212] rounded-lg border border-white/10 flex flex-shrink-0 items-center justify-center hover:bg-white/10 hover:border-white/20 transition-all duration-300 relative z-10 shadow-[0_8px_16px_rgba(0,0,0,0.8),inset_0_2px_4px_rgba(255,255,255,0.05)] group cursor-pointer"
-            aria-label="Elevate to top"
-          >
-            <ArrowUp size={16} className="text-white/50 group-hover:text-white group-hover:-translate-y-0.5 transition-all" />
-          </button>
-        </div>
+              {/* Elevate Up Button */}
+              <button 
+                onClick={(e) => scrollToSection(e as any, 'home')}
+                className="w-9 h-9 2xl:w-10 2xl:h-10 bg-[#121212] rounded-lg border border-white/10 flex flex-shrink-0 items-center justify-center hover:bg-white/10 hover:border-white/20 transition-all duration-300 relative z-10 shadow-[0_8px_16px_rgba(0,0,0,0.8),inset_0_2px_4px_rgba(255,255,255,0.05)] group cursor-pointer"
+                aria-label="Elevate to top"
+              >
+                <ArrowUp size={16} className="text-white/50 group-hover:text-white group-hover:-translate-y-0.5 transition-all" />
+              </button>
+          </div>
       </aside>
     </>
   );

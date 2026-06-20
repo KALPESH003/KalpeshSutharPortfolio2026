@@ -11,7 +11,6 @@ import EducationSection from "@/components/education/EducationSection";
 import Library from "@/components/sections/Library";
 import CinematicFooter from "@/components/sections/Footer";
 
-
 // Lazy load heavy 3D components
 // const SpatialHero = dynamic(() => import("@/components/sections/SpatialHero"), {
 //   loading: () => <div className="w-full h-screen bg-black" />,
@@ -26,7 +25,7 @@ const UltimateHero = dynamic(() => import("@/components/sections/UltimateHero"),
 export default function Portfolio() {
   return (
     <main className="bg-[#000000] text-white font-sans relative selection:bg-[#F16001] selection:text-white">
-      <Hero />     
+        <Hero /> 
       <div className="relative w-full flex flex-col">
         <Work />
         <UIArchive />
