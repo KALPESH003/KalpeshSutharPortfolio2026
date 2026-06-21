@@ -449,7 +449,7 @@ export default function EducationTimeline() {
         style={{ height: scrollTrackHeight }}
       >
         {/* Sticky viewport frame */}
-        <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center">
+        <div className="sticky top-0 h-[100dvh] w-full overflow-hidden flex items-center">
           <BackgroundEffects accentColor={activeItem.accent} />
           
           {/* Inject the Architectural Canvas Overlay */}

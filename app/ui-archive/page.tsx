@@ -10,16 +10,16 @@ const easePremium = [0.76, 0, 0.24, 1] as const;
 // --- MOCK LOCAL UI DESIGNS ---
 export const uiDesignsItems = [
   { id: "01", title: "Land Rover Dashboard", category: "System UI", type: "ui", src: "assets/images/UiArchive/RRui.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "02", title: "Wallet Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Wallet.png?auto=format&fit=crop&q=80&w=1600" }, 
+  { id: "02", title: "Poster Design", category: "Asset", type: "Poster", src: "assets/images/UiArchive/Queen poster.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "03", title: "PocuhPal Expense Tracker", category: "USER Interface", type: "ui", src: "assets/images/UiArchive/pouchpal.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "04", title: "Taruna Interiors", category: "Web Design", type: "ui", src: "assets/images/UiArchive/tarunainteriors.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "05", title: "Tushar Iyer Co. Logo", category: "Corporate Logo", type: "logo", src: "assets/images/UiArchive/t3.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "06", title: "FOX STDUIO", category: "Web Design", type: "ui", src: "assets/images/UiArchive/foxstudio.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "05", title: "FOX STDUIO", category: "Web Design", type: "ui", src: "assets/images/UiArchive/foxstudio.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "06", title: "Tushar Iyer Co. Logo", category: "Corporate Logo", type: "logo", src: "assets/images/UiArchive/t3.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "07", title: "Customized Arch. Icon Pack", category: "Asset Set", type: "icons", src: "assets/images/UiArchive/Archlogopack.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "08", title: "Iconography", category: "Asset Set", type: "logo", src: "assets/images/UiArchive/t1.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "09", title: "Foldium Logo", category: "App Logo", type: "logo", src: "assets/images/UiArchive/foldium.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "10", title: "UniOcular Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Uniocular.png?auto=format&fit=crop&q=80&w=1600" },
-  // { id: "11", title: "Banner Design", category: "Asset", type: "Background", src: "assets/images/UiArchive/.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "11", title: "Wallet Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Wallet.png?auto=format&fit=crop&q=80&w=1600" }, 
 ];
 
 // Layout configuration for the full gallery view (incorporates void & blue blocks)
@@ -29,17 +29,19 @@ const galleryItems = [
   { type: 'image', index: 2, data: uiDesignsItems[2] },
   { type: 'void', id: 'void-1' },
   { type: 'image', index: 3, data: uiDesignsItems[3] },
-  { type: 'blue', id: 'blue-21', title: 'Data Viz', subtitle: 'Component' },
   { type: 'image', index: 4, data: uiDesignsItems[4] },
   { type: 'image', index: 5, data: uiDesignsItems[5] },
   { type: 'image', index: 6, data: uiDesignsItems[6] },
-  { type: 'blue', id: 'blue-2', title: 'Brand Identity', subtitle: 'Sys. Asset' },
-  { type: 'image', index: 7, data: uiDesignsItems[7] },
+  { type: 'blue', id: 'blue-1', title: 'Data Viz', subtitle: 'Component' },
   { type: 'void', id: 'void-2' },
+  { type: 'image', index: 7, data: uiDesignsItems[7] },
+  // { type: 'void', id: 'void-3' },
   { type: 'image', index: 8, data: uiDesignsItems[8] },
   { type: 'image', index: 9, data: uiDesignsItems[9] },
-  { type: 'blue', id: 'blue-3', title: 'Visual Protocol', subtitle: 'Brd. Asset' },
   { type: 'image', index: 10, data: uiDesignsItems[10] },
+  { type: 'image', index: 11, data: uiDesignsItems[11] },
+   { type: 'blue', id: 'blue-2', title: 'Brand Identity', subtitle: 'Sys. Asset' },
+   // { type: 'blue', id: 'blue-3', title: 'Visual Protocol', subtitle: 'Brd. Asset' },
 ];
 
 // --- ARCHITECTURAL BACKGROUND COMPONENT ---

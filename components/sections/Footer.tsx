@@ -233,7 +233,7 @@ export default function Footer() {
       <div className="absolute bottom-[24px] right-[32px] md:right-[64px] w-4 h-4 -mr-2 -mb-2 flex items-center justify-center text-[#0062ff]/70 text-[10px] font-mono leading-none">+</div>
 
       {/* Main Glass Island */}
-      <div className="relative z-20 w-full max-w-7xl">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-5 md:px-10 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}

@@ -28,12 +28,12 @@ export default function Legal() {
         <div className="absolute right-0 top-[-5%] h-[110%] w-[1px] border-l border-dashed border-white/10" />
 
         {/* Registration Marks (+) - Top */}
-        <div className="absolute top-[64px] left-[32px] md:left-[23px] w-4 h-4 -ml-2 -mt-2 flex items-center justify-center text-[#F16001]/70 text-[10px] font-mono leading-none">+</div>
-        <div className="absolute top-[64px] right-[32px] md:right-[64px] w-4 h-4 -mr-2 -mt-2 flex items-center justify-center text-[#F16001]/70 text-[10px] font-mono leading-none">+</div>
+        <div className="absolute top-[64px] left-[32px] md:left-[23px] w-4 h-4 -ml-2 -mt-2 flex items-center justify-center text-[#0062ff]/70 text-[10px] font-mono leading-none">+</div>
+        <div className="absolute top-[64px] right-[32px] md:right-[64px] w-4 h-4 -mr-2 -mt-2 flex items-center justify-center text-[#0062ff]/70 text-[10px] font-mono leading-none">+</div>
 
         {/* Registration Marks (+) - Bottom */}
-        <div className="absolute bottom-[64px] left-[32px] md:left-[23px] w-4 h-4 -ml-2 -mb-2 flex items-center justify-center text-[#F16001]/70 text-[10px] font-mono leading-none">+</div>
-        <div className="absolute bottom-[64px] right-[32px] md:right-[64px] w-4 h-4 -mr-2 -mb-2 flex items-center justify-center text-[#F16001]/70 text-[10px] font-mono leading-none">+</div>
+        <div className="absolute bottom-[64px] left-[32px] md:left-[23px] w-4 h-4 -ml-2 -mb-2 flex items-center justify-center text-[#0062ff]/70 text-[10px] font-mono leading-none">+</div>
+        <div className="absolute bottom-[64px] right-[32px] md:right-[64px] w-4 h-4 -mr-2 -mb-2 flex items-center justify-center text-[#0062ff]/70 text-[10px] font-mono leading-none">+</div>
 
         {/* Subtle Isometric Dot Grid */}
         <div 
@@ -52,7 +52,7 @@ export default function Legal() {
         className="relative z-10 max-w-5xl mx-auto w-full mt-8"
       >
         <div className="flex items-center gap-4 mb-12 border-b border-white/10 pb-6">
-          <div className="w-2 h-2 bg-[#F16001] rounded-none animate-pulse" />
+          <div className="w-2 h-2 bg-[#0062ff] rounded-none animate-pulse" />
           <h2 className="text-3xl md:text-5xl font-sans font-light tracking-tight text-white">Privacy <span className="font-serif italic text-white/50">Policy.</span></h2>
           <span className="ml-auto text-[10px] font-mono tracking-widest text-white/40 uppercase">Effective Date: January 1, {currentYear}</span>
         </div>
@@ -109,7 +109,7 @@ export default function Legal() {
         className="relative z-10 max-w-5xl mx-auto w-full pb-8"
       >
         <div className="flex items-center gap-4 mb-12 border-b border-white/10 pb-6">
-          <div className="w-2 h-2 bg-[#F16001] rounded-none" />
+          <div className="w-2 h-2 bg-[#0062ff] rounded-none" />
           <h2 className="text-3xl md:text-5xl font-sans font-light tracking-tight text-white">Terms of <span className="font-serif italic text-white/50">Service.</span></h2>
           <span className="ml-auto text-[10px] font-mono tracking-widest text-white/40 uppercase">v 2.1.0</span>
         </div>
@@ -174,7 +174,7 @@ export default function Legal() {
             <p className="font-mono text-xs text-white/40 uppercase tracking-widest">
               Official Legal Inquiries:
             </p>
-            <a href="mailto:kalpeshsuthar.work247@gmail.com" className="font-mono text-sm text-white hover:text-[#F16001] transition-colors border border-white/10 px-6 py-3 rounded-sm bg-white/5 hover:bg-white/10">
+            <a href="mailto:kalpeshsuthar.work247@gmail.com" className="font-mono text-sm text-white hover:text-[#0062ff] transition-colors border border-white/10 px-6 py-3 rounded-sm bg-white/5 hover:bg-white/10">
               kalpeshsuthar.work247@gmail.com
             </a>
           </div>
