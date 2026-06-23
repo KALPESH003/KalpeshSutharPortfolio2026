@@ -210,13 +210,13 @@ useEffect(() => {
 
           {/* Global Navigation - Minimal Header */}
           <header className="absolute top-0 left-[-3vw] w-full z-50 px-6 md:px-12 lg:px-24 py-8 flex justify-between items-center pr-6 md:pr-12">
-              <div className="text-sm font-mono tracking-tighter relative z-10 flex items-center gap-2 text-white/80">
+              <h1 className="text-sm font-mono tracking-tighter relative z-10 flex items-center gap-2 text-white/80">
                 <Terminal size={14} className="text-[#0077ff]" />
                 Kalpesh K. Suthar
                 <span className="text-[#0185f1] ml-1">
                   {dots}
                 </span>
-              </div>
+              </h1>
           </header>
               
               {/* The Liquid Glass Card
@@ -278,9 +278,9 @@ useEffect(() => {
                  Creative Technologist
               </span>
               
-              <h1 className="font-extrabold text-[50px] sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[110px] 2xl:text-[130px] uppercase tracking-[-0.06em] leading-[0.92] mb-10 drop-shadow-[0_0_40px_rgba(0,0,0,0.8)] text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/60  ">
+              <h2 className="font-extrabold text-[50px] sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[110px] 2xl:text-[130px] uppercase tracking-[-0.06em] leading-[0.92] mb-10 drop-shadow-[0_0_40px_rgba(0,0,0,0.8)] text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/60  ">
                 Crafting Digital <br/> Experiences<span className="text-[#0077ff] text-[80px]">.</span>
-              </h1>
+              </h2>
      
               <p className="text-[14px] md:text-[15px] text-white/70 max-w-[512px] leading-relaxed mb-12 font-mono text-center">
                 Master in-demand coding skills with our immersive curriculum. Build real-world projects, connect with mentors, and step confidently into your future in tech.

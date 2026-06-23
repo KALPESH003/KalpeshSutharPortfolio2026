@@ -27,7 +27,7 @@ const jetbrainsMono = JetBrains_Mono({
 // --- 1. Comprehensive SEO Metadata ---
 export const metadata: Metadata = {
    metadataBase: new URL("https://kalpeshksuthar.vercel.app"),
-  title: "Kalpesh K. Suthar | Software Engineer",
+  title: "Kalpesh K. Suthar - Software Engineer",
   description: "Portfolio of Kalpesh K. Suthar, a Software Engineer based in Vadodara, Gujarat. Exploring modern software engineering and cinematic UI experiences.",
   keywords: [
     "Kalpesh K Suthar",
@@ -60,9 +60,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://kalpeshksuthar.vercel.app", 
-    title: "Kalpesh K. Suthar | Software Engineer",
+    title: "Kalpesh K. Suthar - Software Engineer",
     description: "Explore the interactive portfolio and engineering projects of Kalpesh K. Suthar.",
-    siteName: "Kalpesh K. Suthar Portfolio",
+    siteName: "Kalpesh K. Suthar",
     images: [
       {
         url: "/og-image.png", // Ensure 1200x630 image in /public folder
