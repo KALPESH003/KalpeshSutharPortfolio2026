@@ -95,27 +95,42 @@ export const metadata: Metadata = {
 // This explicitly connects name to external profiles for Google.
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Kalpesh K. Suthar",
-  alternateName: "Kalpesh Suthar",
-  url: "https://kalpeshksuthar.vercel.app", 
-  jobTitle: "Software Engineer",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Vadodara",
-    addressRegion: "Gujarat",
-    addressCountry: "IN"
-  },
-  sameAs: [
-    "https://github.com/KALPESH003",   
-    "https://linkedin.com/in/kalpesh-k-suthar-943921368/",   
-    "https://leetcode.com/u/kalpeshksuthar003/"
-  ],
-  alumniOf: {
-    "@type": "CollegeOrUniversity",
-    name: "The Maharaja Sayajirao University of Baroda (MSUB)"         
-  },
-  knowsAbout: ["Software Engineer", "Full-Stack Development", "React", "Next.js", "TypeScript", "Node.js", "MSc IT"]
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://kalpeshksuthar.vercel.app/#website",
+      "url": "https://kalpeshksuthar.vercel.app/",
+      "name": "Kalpesh K. Suthar",
+      "alternateName": "Kalpesh Suthar Portfolio",
+      "author": {
+        "@id": "https://kalpeshksuthar.vercel.app/#person"
+      }
+    },
+{
+      // This part connects your site to your LinkedIn profile
+      "@type": "Person",
+      "@id": "https://kalpeshksuthar.vercel.app/#person",
+      "name": "Kalpesh K. Suthar",
+      "url": "https://kalpeshksuthar.vercel.app/",
+      "jobTitle": "Software Engineer",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Vadodara",
+        "addressRegion": "Gujarat",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://github.com/KALPESH003",   
+        "https://linkedin.com/in/kalpesh-k-suthar-943921368/",   
+        "https://leetcode.com/u/kalpeshksuthar003/"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "The Maharaja Sayajirao University of Baroda (MSUB)"        
+      },
+      "knowsAbout": ["Software Engineering", "Full-Stack Development", "React", "Next.js", "TypeScript", "Node.js", "MSc IT"]
+    }
+  ]
 };
 
 export default function RootLayout({

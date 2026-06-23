@@ -22,7 +22,7 @@ export const experienceData = [
   {
     title: "Web Developer",
     subtitle: "Taruna Interiors",
-    date: "Nov 2025 — Feb 2026",
+    date: "Sept 2025 — Feb 2026",
     description: "Built a professional, multi-page website from the ground up for the interior design firm. Handled everything from frontend architecture to Netlify deployment, MongoDB database integration, and Resend email configurations.",
   },
 ];
