@@ -13,13 +13,17 @@ export const uiDesignsItems = [
   { id: "02", title: "Poster Design", category: "Asset", type: "Poster", src: "assets/images/UiArchive/Queen poster.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "03", title: "PocuhPal Expense Tracker", category: "USER Interface", type: "ui", src: "assets/images/UiArchive/pouchpal.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "04", title: "Taruna Interiors", category: "Web Design", type: "ui", src: "assets/images/UiArchive/tarunainteriors.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "05", title: "FOX STDUIO", category: "Web Design", type: "ui", src: "assets/images/UiArchive/foxstudio.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "06", title: "Tushar Iyer Co. Logo", category: "Corporate Logo", type: "logo", src: "assets/images/UiArchive/t3.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "07", title: "Customized Arch. Icon Pack", category: "Asset Set", type: "icons", src: "assets/images/UiArchive/Archlogopack.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "08", title: "Iconography", category: "Asset Set", type: "logo", src: "assets/images/UiArchive/t1.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "09", title: "Foldium Logo", category: "App Logo", type: "logo", src: "assets/images/UiArchive/foldium.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "10", title: "UniOcular Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Uniocular.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "11", title: "Wallet Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Wallet.png?auto=format&fit=crop&q=80&w=1600" }, 
+  { id: "05", title: "Sthapaty79 Studio", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Luxury Hero Section.png?auto=format&fit=crop&q=80&w=1600" }, 
+  { id: "06", title: "Sthapaty79 Studio", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Premium Navbar Stack.png?auto=format&fit=crop&q=80&w=1600" }, 
+  { id: "07", title: "Craftmanship Section", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Cr Section.png?auto=format&fit=crop&q=80&w=1600" }, 
+  { id: "08", title: "Sthapaty79 Studio", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Premium Navbar Stack2.png?auto=format&fit=crop&q=80&w=1600" }, 
+  { id: "09", title: "FOX STDUIO", category: "Web Design", type: "ui", src: "assets/images/UiArchive/foxstudio.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "10", title: "Tushar Iyer Co. Logo", category: "Corporate Logo", type: "logo", src: "assets/images/UiArchive/t3.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "11", title: "Customized Arch. Icon Pack", category: "Asset Set", type: "icons", src: "assets/images/UiArchive/Archlogopack.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "12", title: "Iconography", category: "Asset Set", type: "logo", src: "assets/images/UiArchive/t1.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "13", title: "Foldium Logo", category: "App Logo", type: "logo", src: "assets/images/UiArchive/foldium.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "14", title: "UniOcular Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Uniocular.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "15", title: "Wallet Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Wallet.png?auto=format&fit=crop&q=80&w=1600" }, 
 ];
 
 // Layout configuration for the full gallery view (incorporates void & blue blocks)
@@ -41,6 +45,11 @@ const galleryItems = [
   { type: 'image', index: 10, data: uiDesignsItems[10] },
   { type: 'image', index: 11, data: uiDesignsItems[11] },
    { type: 'blue', id: 'blue-2', title: 'Brand Identity', subtitle: 'Sys. Asset' },
+   { type: 'image', index: 12, data: uiDesignsItems[12] },
+   { type: 'void', id: 'void-3' },
+   { type: 'image', index: 13, data: uiDesignsItems[13] },
+   { type: 'image', index: 14, data: uiDesignsItems[14] },
+   { type: 'image', index: 15, data: uiDesignsItems[15] },
    // { type: 'blue', id: 'blue-3', title: 'Visual Protocol', subtitle: 'Brd. Asset' },
 ];
 
