@@ -56,6 +56,7 @@ const galleryItems = [
    { type: 'image', index: 16, data: uiDesignsItems[16] },
    { type: 'image', index: 17, data: uiDesignsItems[17] },
    { type: 'void', id: 'void-4' },
+   { type: 'image', index: 18, data: uiDesignsItems[18] },
    // { type: 'blue', id: 'blue-3', title: 'Visual Protocol', subtitle: 'Brd. Asset' },
 ];
 
