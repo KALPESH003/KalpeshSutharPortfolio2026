@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
 
@@ -12,22 +12,23 @@ export const uiDesignsItems = [
   { id: "01", title: "Land Rover Dashboard", category: "System UI", type: "UI", src: "assets/images/UiArchive/RRui.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "02", title: "PocuhPal Expense Tracker", category: "USER Interface", type: "UI", src: "assets/images/UiArchive/pouchpal.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "03", title: "Beerlo- Non Alcoholic Business", category: "Web App Design", type: "UI", src: "assets/images/UiArchive/Beerlo.jpg?auto=format&fit=crop&q=80&w=1600" },
-  { id: "04", title: "LumiNote- Dashboard", category: "Saas Product UI", type: "UI", src: "assets/images/UiArchive/Booktracker/main_page.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "05", title: "Taruna Interiors", category: "Web Design", type: "UI", src: "assets/images/UiArchive/tarunainteriors.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "06", title: "LumiNote- Notes Section", category: "Saas Product UI", type: "UI", src: "assets/images/UiArchive/Booktracker/Notes.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "07", title: "Luminote- Library", category: "Saas Product UI", type: "UI", src: "assets/images/UiArchive/Booktracker/Library.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "08", title: "Sthapaty79 Studio", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Premium Navbar Stack.png?auto=format&fit=crop&q=80&w=1600" }, 
-  { id: "09", title: "Sthapaty79 Studio", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Luxury Hero Section.png?auto=format&fit=crop&q=80&w=1600" }, 
-  { id: "10", title: "Sthapaty79 Studio", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Premium Navbar Stack2.png?auto=format&fit=crop&q=80&w=1600" }, 
-  { id: "11", title: "Poster Design", category: "Asset", type: "Poster", src: "assets/images/UiArchive/Queen poster.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "12", title: "FOX STDUIO", category: "Web Design", type: "UI", src: "assets/images/UiArchive/foxstudio.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "13", title: "Craftmanship Section", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Cr Section.png?auto=format&fit=crop&q=80&w=1600" }, 
-  { id: "14", title: "Tushar Iyer Co. Logo", category: "Corporate Logo", type: "logo", src: "assets/images/UiArchive/t3.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "15", title: "Customized Arch. Icon Pack", category: "Asset Set", type: "icons", src: "assets/images/UiArchive/Archlogopack.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "16", title: "Iconography", category: "Asset Set", type: "logo", src: "assets/images/UiArchive/t1.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "17", title: "Foldium Logo", category: "App Logo", type: "logo", src: "assets/images/UiArchive/foldium.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "18", title: "UniOcular Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Uniocular.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "19", title: "Wallet Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Wallet.png?auto=format&fit=crop&q=80&w=1600" }, 
+  { id: "04", title: "EcoDrive", category: "Case Study", type: "UI/UX Case Study", src: "assets/images/UiArchive/EcoDrive.jpg?auto=format&fit=crop&q=80&w=1600" },
+  { id: "05", title: "LumiNote- Dashboard", category: "Saas Product UI", type: "UI", src: "assets/images/UiArchive/Booktracker/main_page.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "06", title: "Taruna Interiors", category: "Web Design", type: "UI", src: "assets/images/UiArchive/tarunainteriors.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "07", title: "LumiNote- Notes Section", category: "Saas Product UI", type: "UI", src: "assets/images/UiArchive/Booktracker/Notes.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "08", title: "Luminote- Library", category: "Saas Product UI", type: "UI", src: "assets/images/UiArchive/Booktracker/Library.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "09", title: "Sthapaty79 Studio", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Premium Navbar Stack.png?auto=format&fit=crop&q=80&w=1600" }, 
+  { id: "10", title: "Sthapaty79 Studio", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Luxury Hero Section.png?auto=format&fit=crop&q=80&w=1600" }, 
+  { id: "11", title: "Sthapaty79 Studio", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Premium Navbar Stack2.png?auto=format&fit=crop&q=80&w=1600" }, 
+  { id: "12", title: "Poster Design", category: "Asset", type: "Poster", src: "assets/images/UiArchive/Queen poster.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "13", title: "FOX STDUIO", category: "Web Design", type: "UI", src: "assets/images/UiArchive/foxstudio.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "14", title: "Craftmanship Section", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Cr Section.png?auto=format&fit=crop&q=80&w=1600" }, 
+  { id: "15", title: "Tushar Iyer Co. Logo", category: "Corporate Logo", type: "logo", src: "assets/images/UiArchive/t3.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "16", title: "Customized Arch. Icon Pack", category: "Asset Set", type: "icons", src: "assets/images/UiArchive/Archlogopack.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "17", title: "Iconography", category: "Asset Set", type: "logo", src: "assets/images/UiArchive/t1.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "18", title: "Foldium Logo", category: "App Logo", type: "logo", src: "assets/images/UiArchive/foldium.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "19", title: "UniOcular Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Uniocular.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "20", title: "Wallet Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Wallet.png?auto=format&fit=crop&q=80&w=1600" }, 
 ];
 
 // Layout configuration for the full gallery view (incorporates void & blue blocks)
@@ -59,6 +60,7 @@ const galleryItems = [
    { type: 'void', id: 'void-4' },
    { type: 'image', index: 18, data: uiDesignsItems[18] },
    { type: 'image', index: 19, data: uiDesignsItems[19] },
+   { type: 'image', index: 20, data: uiDesignsItems[20] },
    // { type: 'blue', id: 'blue-3', title: 'Visual Protocol', subtitle: 'Brd. Asset' },
 ];
 
@@ -104,6 +106,14 @@ const ArchitecturalGrid = () => (
 export default function UiArchiveGallery() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [zoomScale, setZoomScale] = useState(1);
+  const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+
+  const dragStart = useRef({ x: 0, y: 0 });
+  const positionStart = useRef({ x: 0, y: 0 });
+
   // Lock body scroll ONLY when full-screen lightbox is open
   useEffect(() => {
     if (lightboxIndex !== null) {
@@ -130,6 +140,74 @@ export default function UiArchiveGallery() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
+
+  // Reset zoom whenever the selected image changes
+      useEffect(() => {
+        setIsZoomed(false);
+        setZoomScale(1);
+        setZoomPosition({ x: 0, y: 0 });
+      }, [lightboxIndex]);
+
+      // Toggle zoom on image click
+      const handleImageZoom = () => {
+        if (isZoomed) {
+          setIsZoomed(false);
+          setZoomScale(1);
+          setZoomPosition({ x: 0, y: 0 });
+        } else {
+          setIsZoomed(true);
+          setZoomScale(2);
+        }
+      };
+
+      // Mouse-wheel zoom
+      const handleWheelZoom = (e: React.WheelEvent<HTMLDivElement>) => {
+        if (!isZoomed) return;
+
+        e.preventDefault();
+
+        setZoomScale((current) => {
+          const next = current - e.deltaY * 0.0015;
+          return Math.min(Math.max(next, 1.2), 4);
+        });
+      };
+
+      // Start dragging the zoomed image
+      const handlePointerDown = (e: React.PointerEvent<HTMLImageElement>) => {
+        if (!isZoomed) return;
+
+        e.currentTarget.setPointerCapture(e.pointerId);
+
+        setIsDragging(true);
+
+        dragStart.current = {
+          x: e.clientX,
+          y: e.clientY,
+        };
+
+        positionStart.current = {
+          x: zoomPosition.x,
+          y: zoomPosition.y,
+        };
+      };
+
+      // Move the zoomed image
+      const handlePointerMove = (e: React.PointerEvent<HTMLImageElement>) => {
+        if (!isDragging || !isZoomed) return;
+
+        const deltaX = e.clientX - dragStart.current.x;
+        const deltaY = e.clientY - dragStart.current.y;
+
+        setZoomPosition({
+          x: positionStart.current.x + deltaX,
+          y: positionStart.current.y + deltaY,
+        });
+      };
+
+      // Stop dragging
+      const handlePointerUp = () => {
+        setIsDragging(false);
+      };
 
   return (
     <main className="relative w-full bg-[#000000] font-['Inter',sans-serif] z-10 min-h-screen overflow-x-hidden">
@@ -319,19 +397,128 @@ export default function UiArchiveGallery() {
               <ChevronRight className="w-8 h-8" />
             </button>
 
-            {/* Main Image Slider */}
-            <div className="w-full max-w-[80vw] md:max-w-[70vw] h-[65vh] flex items-center justify-center relative z-20">
+            {/* ================================================================= */}
+            {/* ZOOMABLE IMAGE VIEWER                                             */}
+            {/* ================================================================= */}
+
+            <div
+              className={`
+                w-full max-w-[90vw] md:max-w-[82vw]
+                h-[70vh] md:h-[76vh]
+                flex items-center justify-center
+                relative z-20
+                overflow-hidden
+                ${isZoomed ? "cursor-grab" : "cursor-zoom-in"}
+                ${isDragging ? "cursor-grabbing" : ""}
+              `}
+              onWheel={handleWheelZoom}
+            >
               <AnimatePresence mode="wait">
                 <motion.img
                   key={lightboxIndex}
                   initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.5, ease: easePremium }}
+                  animate={{
+                    opacity: 1,
+                    scale: zoomScale,
+                    x: zoomPosition.x,
+                    y: zoomPosition.y,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    scale: 0.98,
+                  }}
+                  transition={{
+                    duration: isDragging ? 0 : 0.5,
+                    ease: easePremium,
+                  }}
                   src={uiDesignsItems[lightboxIndex].src}
                   alt={uiDesignsItems[lightboxIndex].title}
-                  className="w-full h-full object-contain"
+                  draggable={false}
+                  onClick={handleImageZoom}
+                  onPointerDown={handlePointerDown}
+                  onPointerMove={handlePointerMove}
+                  onPointerUp={handlePointerUp}
+                  onPointerCancel={handlePointerUp}
+                  className={`
+                    max-w-full
+                    max-h-full
+                    object-contain
+                    select-none
+                    touch-none
+                    transition-[filter]
+                    duration-300
+                    ${isZoomed ? "will-change-transform" : ""}
+                  `}
                 />
+              </AnimatePresence>
+
+              {/* Zoom hint */}
+              <AnimatePresence>
+                {!isZoomed && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ delay: 0.5, duration: 0.3 }}
+                    className="
+                      absolute
+                      bottom-5
+                      left-1/2
+                      -translate-x-1/2
+                      pointer-events-none
+                      px-4 py-2
+                      rounded-full
+                      border border-white/10
+                      bg-black/60
+                      backdrop-blur-md
+                      text-[9px]
+                      font-mono
+                      uppercase
+                      tracking-[0.2em]
+                      text-white/50
+                      whitespace-nowrap
+                    "
+                  >
+                    Click image to zoom
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Zoom controls */}
+              <AnimatePresence>
+                {isZoomed && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="
+                      absolute
+                      bottom-5
+                      left-1/2
+                      -translate-x-1/2
+                      flex items-center gap-3
+                      px-4 py-2
+                      rounded-full
+                      border border-white/10
+                      bg-black/70
+                      backdrop-blur-xl
+                      pointer-events-none
+                      z-30
+                    "
+                  >
+                    <span className="text-[9px] font-mono uppercase tracking-[0.18em] text-white/40">
+                      Zoom
+                    </span>
+
+                    <span className="text-[9px] font-mono text-[#0062ff]">
+                      {Math.round(zoomScale * 100)}%
+                    </span>
+
+                    <span className="text-[9px] font-mono text-white/30">
+                      • Drag to explore
+                    </span>
+                  </motion.div>
+                )}
               </AnimatePresence>
             </div>
 

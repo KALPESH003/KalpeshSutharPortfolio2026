@@ -1,4 +1,9 @@
+npm run dev
+
+npm run build
+
 git add .
 git commit -m "Updating"
 git push
 git status
+
