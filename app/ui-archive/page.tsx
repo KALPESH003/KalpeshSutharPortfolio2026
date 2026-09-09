@@ -19,16 +19,17 @@ export const uiDesignsItems = [
   { id: "08", title: "Luminote- Library", category: "Saas Product UI", type: "UI", src: "assets/images/UiArchive/Booktracker/Library.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "09", title: "Sthapaty79 Studio", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Premium Navbar Stack.png?auto=format&fit=crop&q=80&w=1600" }, 
   { id: "10", title: "Sthapaty79 Studio", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Luxury Hero Section.png?auto=format&fit=crop&q=80&w=1600" }, 
-  { id: "11", title: "Sthapaty79 Studio", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Premium Navbar Stack2.png?auto=format&fit=crop&q=80&w=1600" }, 
-  { id: "12", title: "Poster Design", category: "Asset", type: "Poster", src: "assets/images/UiArchive/Queen poster.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "13", title: "FOX STDUIO", category: "Web Design", type: "UI", src: "assets/images/UiArchive/foxstudio.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "14", title: "Craftmanship Section", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Cr Section.png?auto=format&fit=crop&q=80&w=1600" }, 
-  { id: "15", title: "Tushar Iyer Co. Logo", category: "Corporate Logo", type: "logo", src: "assets/images/UiArchive/t3.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "16", title: "Customized Arch. Icon Pack", category: "Asset Set", type: "icons", src: "assets/images/UiArchive/Archlogopack.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "17", title: "Iconography", category: "Asset Set", type: "logo", src: "assets/images/UiArchive/t1.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "18", title: "Foldium Logo", category: "App Logo", type: "logo", src: "assets/images/UiArchive/foldium.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "19", title: "UniOcular Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Uniocular.png?auto=format&fit=crop&q=80&w=1600" },
-  { id: "20", title: "Wallet Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Wallet.png?auto=format&fit=crop&q=80&w=1600" }, 
+  { id: "11", title: "Interior Portfolio", category: "Web Design", type: "UI", src: "assets/images/UiArchive/Interior Portfolio Demo.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "12", title: "Sthapaty79 Studio", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Premium Navbar Stack2.png?auto=format&fit=crop&q=80&w=1600" }, 
+  { id: "13", title: "Poster Design", category: "Asset", type: "Poster", src: "assets/images/UiArchive/Queen poster.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "14", title: "FOX STDUIO", category: "Web Design", type: "UI", src: "assets/images/UiArchive/foxstudio.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "15", title: "Craftmanship Section", category: "Web Design", type: "logo", src: "assets/images/UiArchive/Cr Section.png?auto=format&fit=crop&q=80&w=1600" }, 
+  { id: "16", title: "Tushar Iyer Co. Logo", category: "Corporate Logo", type: "logo", src: "assets/images/UiArchive/t3.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "17", title: "Customized Arch. Icon Pack", category: "Asset Set", type: "icons", src: "assets/images/UiArchive/Archlogopack.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "18", title: "Iconography", category: "Asset Set", type: "logo", src: "assets/images/UiArchive/t1.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "19", title: "Foldium Logo", category: "App Logo", type: "logo", src: "assets/images/UiArchive/foldium.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "20", title: "UniOcular Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Uniocular.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "21", title: "Wallet Logo", category: "Brand Logo", type: "logo", src: "assets/images/UiArchive/Wallet.png?auto=format&fit=crop&q=80&w=1600" }, 
 ];
 
 // Layout configuration for the full gallery view (incorporates void & blue blocks)
@@ -61,6 +62,7 @@ const galleryItems = [
    { type: 'image', index: 18, data: uiDesignsItems[18] },
    { type: 'image', index: 19, data: uiDesignsItems[19] },
    { type: 'image', index: 20, data: uiDesignsItems[20] },
+   { type: 'image', index: 21, data: uiDesignsItems[21] },
    // { type: 'blue', id: 'blue-3', title: 'Visual Protocol', subtitle: 'Brd. Asset' },
 ];
 
