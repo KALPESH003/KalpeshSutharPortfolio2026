@@ -106,14 +106,6 @@ const ArchitecturalGrid = () => (
 export default function UiArchiveGallery() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const [isZoomed, setIsZoomed] = useState(false);
-  const [zoomScale, setZoomScale] = useState(1);
-  const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-
-  const dragStart = useRef({ x: 0, y: 0 });
-  const positionStart = useRef({ x: 0, y: 0 });
-
   // Lock body scroll ONLY when full-screen lightbox is open
   useEffect(() => {
     if (lightboxIndex !== null) {
@@ -140,74 +132,121 @@ export default function UiArchiveGallery() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
+  
+    // --- ZOOM / PAN (lightbox) ---
+      const ZOOM_LEVELS = [1, 1.8, 2.6, 3.6]; // normal -> stage 1 -> stage 2 -> stage 3 -> normal
+      const [zoomLevel, setZoomLevel] = useState(0);
+      const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
+      const [isDragging, setIsDragging] = useState(false);
+      const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
-  // Reset zoom whenever the selected image changes
+      const imageRef = useRef<HTMLImageElement>(null);
+      const sliderRef = useRef<HTMLDivElement>(null);
+      const zoomLevelRef = useRef(0);
+      const dragStateRef = useRef({ startX: 0, startY: 0, originX: 0, originY: 0, moved: false });
+
+      const zoomScale = ZOOM_LEVELS[zoomLevel];
+
       useEffect(() => {
-        setIsZoomed(false);
-        setZoomScale(1);
-        setZoomPosition({ x: 0, y: 0 });
+        zoomLevelRef.current = zoomLevel;
+      }, [zoomLevel]);
+
+      // Reset zoom whenever a different image is opened
+      useEffect(() => {
+        setZoomLevel(0);
+        setPanOffset({ x: 0, y: 0 });
       }, [lightboxIndex]);
 
-      // Toggle zoom on image click
-      const handleImageZoom = () => {
-        if (isZoomed) {
-          setIsZoomed(false);
-          setZoomScale(1);
-          setZoomPosition({ x: 0, y: 0 });
-        } else {
-          setIsZoomed(true);
-          setZoomScale(2);
+      // Stops the image from panning past its own edges
+      const clampPan = useCallback((offset: { x: number; y: number }, scale: number) => {
+        const el = imageRef.current;
+        if (!el) return offset;
+        const overflowX = Math.max(0, (el.offsetWidth * scale - el.offsetWidth) / 2);
+        const overflowY = Math.max(0, (el.offsetHeight * scale - el.offsetHeight) / 2);
+        return {
+          x: Math.min(overflowX, Math.max(-overflowX, offset.x)),
+          y: Math.min(overflowY, Math.max(-overflowY, offset.y)),
+        };
+      }, []);
+
+      // Click cycles: normal -> zoom 1 -> zoom 2 -> zoom 3 -> normal
+      const handleImageClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        if (dragStateRef.current.moved) {
+          dragStateRef.current.moved = false; // this click was the end of a drag, ignore it
+          return;
         }
-      };
-
-      // Mouse-wheel zoom
-      const handleWheelZoom = (e: React.WheelEvent<HTMLDivElement>) => {
-        if (!isZoomed) return;
-
-        e.preventDefault();
-
-        setZoomScale((current) => {
-          const next = current - e.deltaY * 0.0015;
-          return Math.min(Math.max(next, 1.2), 4);
+        setZoomLevel((prev) => {
+          const next = (prev + 1) % ZOOM_LEVELS.length;
+          setPanOffset((prevOffset) =>
+            next === 0 ? { x: 0, y: 0 } : clampPan(prevOffset, ZOOM_LEVELS[next])
+          );
+          return next;
         });
       };
 
-      // Start dragging the zoomed image
-      const handlePointerDown = (e: React.PointerEvent<HTMLImageElement>) => {
-        if (!isZoomed) return;
+      const handleImageMouseDown = (e: React.MouseEvent) => {
+        dragStateRef.current = {
+          startX: e.clientX,
+          startY: e.clientY,
+          originX: panOffset.x,
+          originY: panOffset.y,
+          moved: false,
+        };
+        if (zoomLevel > 0) setIsDragging(true);
+      };
 
-        e.currentTarget.setPointerCapture(e.pointerId);
+      const handleSliderMouseMove = (e: React.MouseEvent) => {
+        if (isDragging) return; // handled by the window listener below while dragging
+        setCursorPos({ x: e.clientX, y: e.clientY });
+      };
 
-        setIsDragging(true);
+      // Drag-to-pan tracked on window so it stays smooth even during fast movement
+      useEffect(() => {
+        if (!isDragging) return;
 
-        dragStart.current = {
-          x: e.clientX,
-          y: e.clientY,
+        const onMove = (e: MouseEvent) => {
+          const dx = e.clientX - dragStateRef.current.startX;
+          const dy = e.clientY - dragStateRef.current.startY;
+          if (Math.abs(dx) > 3 || Math.abs(dy) > 3) dragStateRef.current.moved = true;
+          setCursorPos({ x: e.clientX, y: e.clientY });
+          setPanOffset(
+            clampPan(
+              { x: dragStateRef.current.originX + dx, y: dragStateRef.current.originY + dy },
+              zoomScale
+            )
+          );
+        };
+        const onUp = () => setIsDragging(false);
+
+        window.addEventListener("mousemove", onMove);
+        window.addEventListener("mouseup", onUp);
+        return () => {
+          window.removeEventListener("mousemove", onMove);
+          window.removeEventListener("mouseup", onUp);
+        };
+      }, [isDragging, zoomScale, clampPan]);
+
+      // Damped scroll-to-pan while zoomed in (native listener so preventDefault works)
+      useEffect(() => {
+        const el = sliderRef.current;
+        if (!el) return;
+
+        const onWheel = (e: WheelEvent) => {
+          if (zoomLevelRef.current === 0) return;
+          e.preventDefault();
+          const damping = 0.55; // lower = slower, more controlled scroll
+          setPanOffset((prev) =>
+            clampPan(
+              { x: prev.x - e.deltaX * damping, y: prev.y - e.deltaY * damping },
+              ZOOM_LEVELS[zoomLevelRef.current]
+            )
+          );
         };
 
-        positionStart.current = {
-          x: zoomPosition.x,
-          y: zoomPosition.y,
-        };
-      };
-
-      // Move the zoomed image
-      const handlePointerMove = (e: React.PointerEvent<HTMLImageElement>) => {
-        if (!isDragging || !isZoomed) return;
-
-        const deltaX = e.clientX - dragStart.current.x;
-        const deltaY = e.clientY - dragStart.current.y;
-
-        setZoomPosition({
-          x: positionStart.current.x + deltaX,
-          y: positionStart.current.y + deltaY,
-        });
-      };
-
-      // Stop dragging
-      const handlePointerUp = () => {
-        setIsDragging(false);
-      };
+        el.addEventListener("wheel", onWheel, { passive: false });
+        return () => el.removeEventListener("wheel", onWheel);
+      }, [clampPan]);
 
   return (
     <main className="relative w-full bg-[#000000] font-['Inter',sans-serif] z-10 min-h-screen overflow-x-hidden">
@@ -397,129 +436,59 @@ export default function UiArchiveGallery() {
               <ChevronRight className="w-8 h-8" />
             </button>
 
-            {/* ================================================================= */}
-            {/* ZOOMABLE IMAGE VIEWER                                             */}
-            {/* ================================================================= */}
-
+                    {/* Main Image Slider */}
             <div
-              className={`
-                w-full max-w-[90vw] md:max-w-[82vw]
-                h-[70vh] md:h-[76vh]
-                flex items-center justify-center
-                relative z-20
-                overflow-hidden
-                ${isZoomed ? "cursor-grab" : "cursor-zoom-in"}
-                ${isDragging ? "cursor-grabbing" : ""}
-              `}
-              onWheel={handleWheelZoom}
+              ref={sliderRef}
+              className="w-full max-w-[80vw] md:max-w-[70vw] h-[65vh] flex items-center justify-center relative z-20 overflow-hidden select-none"
+              onMouseMove={handleSliderMouseMove}
+              style={{
+                cursor: isDragging
+                  ? "grabbing"
+                  : zoomLevel === 0
+                  ? "zoom-in"
+                  : zoomLevel === ZOOM_LEVELS.length - 1
+                  ? "zoom-out"
+                  : "grab",
+              }}
             >
               <AnimatePresence mode="wait">
-                <motion.img
+                <motion.div
                   key={lightboxIndex}
                   initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{
-                    opacity: 1,
-                    scale: zoomScale,
-                    x: zoomPosition.x,
-                    y: zoomPosition.y,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    scale: 0.98,
-                  }}
-                  transition={{
-                    duration: isDragging ? 0 : 0.5,
-                    ease: easePremium,
-                  }}
-                  src={uiDesignsItems[lightboxIndex].src}
-                  alt={uiDesignsItems[lightboxIndex].title}
-                  draggable={false}
-                  onClick={handleImageZoom}
-                  onPointerDown={handlePointerDown}
-                  onPointerMove={handlePointerMove}
-                  onPointerUp={handlePointerUp}
-                  onPointerCancel={handlePointerUp}
-                  className={`
-                    max-w-full
-                    max-h-full
-                    object-contain
-                    select-none
-                    touch-none
-                    transition-[filter]
-                    duration-300
-                    ${isZoomed ? "will-change-transform" : ""}
-                  `}
-                />
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.5, ease: easePremium }}
+                  className="w-full h-full flex items-center justify-center"
+                >
+                  <img
+                    ref={imageRef}
+                    src={uiDesignsItems[lightboxIndex].src}
+                    alt={uiDesignsItems[lightboxIndex].title}
+                    draggable={false}
+                    onMouseDown={handleImageMouseDown}
+                    onClick={handleImageClick}
+                    className="w-full h-full object-contain"
+                    style={{
+                      transform: `translate(${panOffset.x}px, ${panOffset.y}px) scale(${zoomScale})`,
+                      transition: isDragging
+                        ? "none"
+                        : "transform 0.35s cubic-bezier(0.76, 0, 0.24, 1)",
+                      cursor: "inherit",
+                      willChange: "transform",
+                    }}
+                  />
+                </motion.div>
               </AnimatePresence>
 
-              {/* Zoom hint */}
-              <AnimatePresence>
-                {!isZoomed && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    transition={{ delay: 0.5, duration: 0.3 }}
-                    className="
-                      absolute
-                      bottom-5
-                      left-1/2
-                      -translate-x-1/2
-                      pointer-events-none
-                      px-4 py-2
-                      rounded-full
-                      border border-white/10
-                      bg-black/60
-                      backdrop-blur-md
-                      text-[9px]
-                      font-mono
-                      uppercase
-                      tracking-[0.2em]
-                      text-white/50
-                      whitespace-nowrap
-                    "
-                  >
-                    Click image to zoom
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Zoom controls */}
-              <AnimatePresence>
-                {isZoomed && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="
-                      absolute
-                      bottom-5
-                      left-1/2
-                      -translate-x-1/2
-                      flex items-center gap-3
-                      px-4 py-2
-                      rounded-full
-                      border border-white/10
-                      bg-black/70
-                      backdrop-blur-xl
-                      pointer-events-none
-                      z-30
-                    "
-                  >
-                    <span className="text-[9px] font-mono uppercase tracking-[0.18em] text-white/40">
-                      Zoom
-                    </span>
-
-                    <span className="text-[9px] font-mono text-[#0062ff]">
-                      {Math.round(zoomScale * 100)}%
-                    </span>
-
-                    <span className="text-[9px] font-mono text-white/30">
-                      • Drag to explore
-                    </span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {/* Cursor-follow indicator */}
+              {zoomLevel > 0 && (
+                <div
+                  className="pointer-events-none fixed z-[200] rounded-full border border-white/10 bg-black/60 px-2 py-1 font-mono text-[10px] tracking-widest text-white/70 backdrop-blur-sm"
+                  style={{ left: cursorPos.x + 18, top: cursorPos.y + 18 }}
+                >
+                  {Math.round(zoomScale * 100)}%
+                </div>
+              )}
             </div>
 
             {/* Bottom Caption (Matches layout in screenshot) */}
