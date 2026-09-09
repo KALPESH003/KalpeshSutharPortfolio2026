@@ -12,7 +12,7 @@ export const uiDesignsItems = [
   { id: "01", title: "Land Rover Dashboard", category: "System UI", type: "UI", src: "assets/images/UiArchive/RRui.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "02", title: "PocuhPal Expense Tracker", category: "USER Interface", type: "UI", src: "assets/images/UiArchive/pouchpal.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "03", title: "Beerlo- Non Alcoholic Business", category: "Web App Design", type: "UI", src: "assets/images/UiArchive/Beerlo.jpg?auto=format&fit=crop&q=80&w=1600" },
-  { id: "04", title: "EcoDrive", category: "Case Study", type: "UI/UX Case Study", src: "assets/images/UiArchive/EcoDrive.jpg?auto=format&fit=crop&q=80&w=1600" },
+  { id: "04", title: "EcoDrive-Case Study", category: "UI/UX Case Study", type: "Case Study", src: "assets/images/UiArchive/EcoDrive.jpg?auto=format&fit=crop&q=80&w=1600" },
   { id: "05", title: "LumiNote- Dashboard", category: "Saas Product UI", type: "UI", src: "assets/images/UiArchive/Booktracker/main_page.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "06", title: "Taruna Interiors", category: "Web Design", type: "UI", src: "assets/images/UiArchive/tarunainteriors.png?auto=format&fit=crop&q=80&w=1600" },
   { id: "07", title: "LumiNote- Notes Section", category: "Saas Product UI", type: "UI", src: "assets/images/UiArchive/Booktracker/Notes.png?auto=format&fit=crop&q=80&w=1600" },
