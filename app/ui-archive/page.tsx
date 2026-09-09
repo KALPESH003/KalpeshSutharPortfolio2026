@@ -133,120 +133,248 @@ export default function UiArchiveGallery() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
   
-    // --- ZOOM / PAN (lightbox) ---
-      const ZOOM_LEVELS = [1, 1.8, 2.6, 3.6]; // normal -> stage 1 -> stage 2 -> stage 3 -> normal
-      const [zoomLevel, setZoomLevel] = useState(0);
-      const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
-      const [isDragging, setIsDragging] = useState(false);
-      const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+      // --- ZOOM / PAN (lightbox) ---
+  const NORMAL_SCALE = 1;
+  const MID_SCALE = 2;            // first click: 200%
+  const MIN_SCALE = 1;            // can't shrink past the normal fitted size
+  const MAX_SCALE = 40;           // effectively unlimited — raise if you ever need more
+  const FALLBACK_FULL_SCALE = 4;  // used only until the image finishes loading
 
-      const imageRef = useRef<HTMLImageElement>(null);
-      const sliderRef = useRef<HTMLDivElement>(null);
-      const zoomLevelRef = useRef(0);
-      const dragStateRef = useRef({ startX: 0, startY: 0, originX: 0, originY: 0, moved: false });
+  const [scale, setScale] = useState(NORMAL_SCALE);
+  const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [cursorPos, setCursorPos] = useState<{ x: number; y: number } | null>(null);
+  const [fullScale, setFullScale] = useState(FALLBACK_FULL_SCALE);
 
-      const zoomScale = ZOOM_LEVELS[zoomLevel];
+  const imageRef = useRef<HTMLImageElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
-      useEffect(() => {
-        zoomLevelRef.current = zoomLevel;
-      }, [zoomLevel]);
+  // Refs mirror the state above so drag/wheel/pinch math reads the latest value
+  // synchronously, even between fast successive events.
+  const scaleRef = useRef(NORMAL_SCALE);
+  const panRef = useRef({ x: 0, y: 0 });
+  const stageRef = useRef(0); // 0 = fresh/normal, 1 = 200%, 2 = full, 3 = back to normal (next click closes)
+  const dragRef = useRef({ startX: 0, startY: 0, originX: 0, originY: 0, moved: false, active: false });
+  const pinchRef = useRef({ active: false, lastDist: 0 });
 
-      // Reset zoom whenever a different image is opened
-      useEffect(() => {
-        setZoomLevel(0);
+  // Keeps the zoomed image from ever panning past its own edge
+  const clampPan = useCallback((offset: { x: number; y: number }, s: number) => {
+    const el = imageRef.current;
+    if (!el) return offset;
+    const overflowX = Math.max(0, (el.offsetWidth * s - el.offsetWidth) / 2);
+    const overflowY = Math.max(0, (el.offsetHeight * s - el.offsetHeight) / 2);
+    return {
+      x: Math.min(overflowX, Math.max(-overflowX, offset.x)),
+      y: Math.min(overflowY, Math.max(-overflowY, offset.y)),
+    };
+  }, []);
+
+  // Keeps whatever point is under the cursor / pinch-midpoint visually fixed as the scale changes
+  const zoomAround = useCallback(
+    (clientX: number, clientY: number, oldScale: number, newScale: number) => {
+      const el = sliderRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const dx = clientX - (rect.left + rect.width / 2);
+      const dy = clientY - (rect.top + rect.height / 2);
+      const ratio = newScale / oldScale;
+      const next = clampPan(
+        { x: dx - (dx - panRef.current.x) * ratio, y: dy - (dy - panRef.current.y) * ratio },
+        newScale
+      );
+      panRef.current = next;
+      setPanOffset(next);
+    },
+    [clampPan]
+  );
+
+  // "Full-image zoom" = the image's true native pixel size (1:1), computed from its
+  // actual contained (letterboxed) render size, not the outer box — this keeps it
+  // crystal clear instead of guessing a fixed multiplier.
+  const recomputeFullScale = useCallback(() => {
+    const el = imageRef.current;
+    if (!el || !el.naturalWidth || !el.naturalHeight || !el.clientWidth || !el.clientHeight) return;
+    const ratio = Math.max(el.naturalWidth / el.clientWidth, el.naturalHeight / el.clientHeight);
+    setFullScale(ratio > 1 ? ratio : FALLBACK_FULL_SCALE);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("resize", recomputeFullScale);
+    return () => window.removeEventListener("resize", recomputeFullScale);
+  }, [recomputeFullScale]);
+
+  // Reset zoom whenever a different image is opened
+  useEffect(() => {
+    scaleRef.current = NORMAL_SCALE;
+    panRef.current = { x: 0, y: 0 };
+    stageRef.current = 0;
+    setScale(NORMAL_SCALE);
+    setPanOffset({ x: 0, y: 0 });
+  }, [lightboxIndex]);
+
+  const applyScale = useCallback(
+    (target: number, anchor?: { x: number; y: number }) => {
+      const clamped = Math.min(MAX_SCALE, Math.max(MIN_SCALE, target));
+      if (clamped <= NORMAL_SCALE + 0.001) {
+        panRef.current = { x: 0, y: 0 };
         setPanOffset({ x: 0, y: 0 });
-      }, [lightboxIndex]);
+      } else if (anchor) {
+        zoomAround(anchor.x, anchor.y, scaleRef.current, clamped);
+      }
+      scaleRef.current = clamped;
+      setScale(clamped);
+    },
+    [zoomAround]
+  );
 
-      // Stops the image from panning past its own edges
-      const clampPan = useCallback((offset: { x: number; y: number }, scale: number) => {
-        const el = imageRef.current;
-        if (!el) return offset;
-        const overflowX = Math.max(0, (el.offsetWidth * scale - el.offsetWidth) / 2);
-        const overflowY = Math.max(0, (el.offsetHeight * scale - el.offsetHeight) / 2);
-        return {
-          x: Math.min(overflowX, Math.max(-overflowX, offset.x)),
-          y: Math.min(overflowY, Math.max(-overflowY, offset.y)),
-        };
-      }, []);
+  // Click / tap cycle: normal -> 200% -> full -> normal -> (next click closes)
+  const cycleZoom = useCallback(
+    (anchor?: { x: number; y: number }) => {
+      const stage = stageRef.current;
+      if (stage === 3) {
+        setLightboxIndex(null);
+        return;
+      }
+      const next = stage + 1;
+      stageRef.current = next;
+      const target = next === 1 ? MID_SCALE : next === 2 ? fullScale : NORMAL_SCALE;
+      applyScale(target, next === 3 ? undefined : anchor);
+    },
+    [applyScale, fullScale]
+  );
 
-      // Click cycles: normal -> zoom 1 -> zoom 2 -> zoom 3 -> normal
-      const handleImageClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        if (dragStateRef.current.moved) {
-          dragStateRef.current.moved = false; // this click was the end of a drag, ignore it
-          return;
-        }
-        setZoomLevel((prev) => {
-          const next = (prev + 1) % ZOOM_LEVELS.length;
-          setPanOffset((prevOffset) =>
-            next === 0 ? { x: 0, y: 0 } : clampPan(prevOffset, ZOOM_LEVELS[next])
-          );
-          return next;
-        });
-      };
+  const handleImageClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (dragRef.current.moved) {
+      dragRef.current.moved = false;
+      return;
+    }
+    cycleZoom({ x: e.clientX, y: e.clientY });
+  };
 
-      const handleImageMouseDown = (e: React.MouseEvent) => {
-        dragStateRef.current = {
-          startX: e.clientX,
-          startY: e.clientY,
-          originX: panOffset.x,
-          originY: panOffset.y,
+  const handleImageMouseDown = (e: React.MouseEvent) => {
+    if (scaleRef.current <= NORMAL_SCALE + 0.001) return; // nothing to pan at normal size
+    dragRef.current = {
+      startX: e.clientX,
+      startY: e.clientY,
+      originX: panRef.current.x,
+      originY: panRef.current.y,
+      moved: false,
+      active: true,
+    };
+    setIsDragging(true);
+  };
+
+  const handleSliderMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) setCursorPos({ x: e.clientX, y: e.clientY });
+  };
+  const handleSliderMouseLeave = () => setCursorPos(null);
+
+  // Mouse drag-to-pan
+  useEffect(() => {
+    if (!isDragging) return;
+    const onMove = (e: MouseEvent) => {
+      const dx = e.clientX - dragRef.current.startX;
+      const dy = e.clientY - dragRef.current.startY;
+      if (Math.abs(dx) > 4 || Math.abs(dy) > 4) dragRef.current.moved = true;
+      setCursorPos({ x: e.clientX, y: e.clientY });
+      const next = clampPan(
+        { x: dragRef.current.originX + dx, y: dragRef.current.originY + dy },
+        scaleRef.current
+      );
+      panRef.current = next;
+      setPanOffset(next);
+    };
+    const onUp = () => {
+      dragRef.current.active = false;
+      setIsDragging(false);
+    };
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseup", onUp);
+    };
+  }, [isDragging, clampPan]);
+
+  // Wheel/trackpad zoom + touch pan & pinch — bound natively so preventDefault
+  // reliably stops page scroll and the browser's own pinch-zoom.
+  useEffect(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const factor = Math.exp(-e.deltaY * 0.0015); // smooth on trackpad, snappy on a mouse notch
+      applyScale(scaleRef.current * factor, { x: e.clientX, y: e.clientY });
+      stageRef.current = scaleRef.current > NORMAL_SCALE + 0.01 ? 1 : 0;
+    };
+
+    const dist = (t: TouchList) => Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+    const mid = (t: TouchList) => ({ x: (t[0].clientX + t[1].clientX) / 2, y: (t[0].clientY + t[1].clientY) / 2 });
+
+    const onTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 2) {
+        pinchRef.current = { active: true, lastDist: dist(e.touches) };
+        dragRef.current.active = false;
+      } else if (e.touches.length === 1) {
+        dragRef.current = {
+          startX: e.touches[0].clientX,
+          startY: e.touches[0].clientY,
+          originX: panRef.current.x,
+          originY: panRef.current.y,
           moved: false,
+          active: true,
         };
-        if (zoomLevel > 0) setIsDragging(true);
-      };
+      }
+    };
 
-      const handleSliderMouseMove = (e: React.MouseEvent) => {
-        if (isDragging) return; // handled by the window listener below while dragging
-        setCursorPos({ x: e.clientX, y: e.clientY });
-      };
+    const onTouchMove = (e: TouchEvent) => {
+      if (pinchRef.current.active && e.touches.length === 2) {
+        e.preventDefault();
+        const d = dist(e.touches);
+        const factor = d / pinchRef.current.lastDist;
+        applyScale(scaleRef.current * factor, mid(e.touches));
+        stageRef.current = scaleRef.current > NORMAL_SCALE + 0.01 ? 1 : 0;
+        pinchRef.current.lastDist = d;
+      } else if (dragRef.current.active && e.touches.length === 1 && scaleRef.current > NORMAL_SCALE + 0.001) {
+        e.preventDefault();
+        const dx = e.touches[0].clientX - dragRef.current.startX;
+        const dy = e.touches[0].clientY - dragRef.current.startY;
+        if (Math.abs(dx) > 4 || Math.abs(dy) > 4) dragRef.current.moved = true;
+        const next = clampPan(
+          { x: dragRef.current.originX + dx, y: dragRef.current.originY + dy },
+          scaleRef.current
+        );
+        panRef.current = next;
+        setPanOffset(next);
+      }
+    };
 
-      // Drag-to-pan tracked on window so it stays smooth even during fast movement
-      useEffect(() => {
-        if (!isDragging) return;
+    const onTouchEnd = (e: TouchEvent) => {
+      if (pinchRef.current.active) {
+        pinchRef.current.active = false;
+        return;
+      }
+      if (dragRef.current.active && !dragRef.current.moved) {
+        e.preventDefault(); // stop the browser's ghost click from double-firing the cycle
+        cycleZoom({ x: dragRef.current.startX, y: dragRef.current.startY });
+      }
+      dragRef.current.active = false;
+      dragRef.current.moved = false;
+    };
 
-        const onMove = (e: MouseEvent) => {
-          const dx = e.clientX - dragStateRef.current.startX;
-          const dy = e.clientY - dragStateRef.current.startY;
-          if (Math.abs(dx) > 3 || Math.abs(dy) > 3) dragStateRef.current.moved = true;
-          setCursorPos({ x: e.clientX, y: e.clientY });
-          setPanOffset(
-            clampPan(
-              { x: dragStateRef.current.originX + dx, y: dragStateRef.current.originY + dy },
-              zoomScale
-            )
-          );
-        };
-        const onUp = () => setIsDragging(false);
-
-        window.addEventListener("mousemove", onMove);
-        window.addEventListener("mouseup", onUp);
-        return () => {
-          window.removeEventListener("mousemove", onMove);
-          window.removeEventListener("mouseup", onUp);
-        };
-      }, [isDragging, zoomScale, clampPan]);
-
-      // Damped scroll-to-pan while zoomed in (native listener so preventDefault works)
-      useEffect(() => {
-        const el = sliderRef.current;
-        if (!el) return;
-
-        const onWheel = (e: WheelEvent) => {
-          if (zoomLevelRef.current === 0) return;
-          e.preventDefault();
-          const damping = 0.55; // lower = slower, more controlled scroll
-          setPanOffset((prev) =>
-            clampPan(
-              { x: prev.x - e.deltaX * damping, y: prev.y - e.deltaY * damping },
-              ZOOM_LEVELS[zoomLevelRef.current]
-            )
-          );
-        };
-
-        el.addEventListener("wheel", onWheel, { passive: false });
-        return () => el.removeEventListener("wheel", onWheel);
-      }, [clampPan]);
+    el.addEventListener("wheel", onWheel, { passive: false });
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchmove", onTouchMove, { passive: false });
+    el.addEventListener("touchend", onTouchEnd, { passive: false });
+    return () => {
+      el.removeEventListener("wheel", onWheel);
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchmove", onTouchMove);
+      el.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [applyScale, clampPan, cycleZoom]);
 
   return (
     <main className="relative w-full bg-[#000000] font-['Inter',sans-serif] z-10 min-h-screen overflow-x-hidden">
@@ -436,60 +564,57 @@ export default function UiArchiveGallery() {
               <ChevronRight className="w-8 h-8" />
             </button>
 
-                    {/* Main Image Slider */}
-            <div
-              ref={sliderRef}
-              className="w-full max-w-[80vw] md:max-w-[70vw] h-[65vh] flex items-center justify-center relative z-20 overflow-hidden select-none"
-              onMouseMove={handleSliderMouseMove}
-              style={{
-                cursor: isDragging
-                  ? "grabbing"
-                  : zoomLevel === 0
-                  ? "zoom-in"
-                  : zoomLevel === ZOOM_LEVELS.length - 1
-                  ? "zoom-out"
-                  : "grab",
-              }}
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={lightboxIndex}
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.5, ease: easePremium }}
-                  className="w-full h-full flex items-center justify-center"
-                >
-                  <img
-                    ref={imageRef}
-                    src={uiDesignsItems[lightboxIndex].src}
-                    alt={uiDesignsItems[lightboxIndex].title}
-                    draggable={false}
-                    onMouseDown={handleImageMouseDown}
-                    onClick={handleImageClick}
-                    className="w-full h-full object-contain"
-                    style={{
-                      transform: `translate(${panOffset.x}px, ${panOffset.y}px) scale(${zoomScale})`,
-                      transition: isDragging
-                        ? "none"
-                        : "transform 0.35s cubic-bezier(0.76, 0, 0.24, 1)",
-                      cursor: "inherit",
-                      willChange: "transform",
-                    }}
-                  />
-                </motion.div>
-              </AnimatePresence>
-
-              {/* Cursor-follow indicator */}
-              {zoomLevel > 0 && (
+            {/* Main Image Slider */}
                 <div
-                  className="pointer-events-none fixed z-[200] rounded-full border border-white/10 bg-black/60 px-2 py-1 font-mono text-[10px] tracking-widest text-white/70 backdrop-blur-sm"
-                  style={{ left: cursorPos.x + 18, top: cursorPos.y + 18 }}
+                  ref={sliderRef}
+                  className="w-full max-w-[80vw] md:max-w-[70vw] h-[65vh] flex items-center justify-center relative z-20 overflow-hidden select-none touch-none"
+                  onMouseMove={handleSliderMouseMove}
+                  onMouseLeave={handleSliderMouseLeave}
+                  style={{
+                    cursor: isDragging ? "grabbing" : scale > NORMAL_SCALE + 0.001 ? "grab" : "zoom-in",
+                  }}
                 >
-                  {Math.round(zoomScale * 100)}%
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={lightboxIndex}
+                      initial={{ opacity: 0, scale: 0.98 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.98 }}
+                      transition={{ duration: 0.5, ease: easePremium }}
+                      className="w-full h-full flex items-center justify-center"
+                    >
+                      <img
+                        ref={imageRef}
+                        src={uiDesignsItems[lightboxIndex].src}
+                        alt={uiDesignsItems[lightboxIndex].title}
+                        draggable={false}
+                        onLoad={recomputeFullScale}
+                        onMouseDown={handleImageMouseDown}
+                        onClick={handleImageClick}
+                        className="w-full h-full object-contain"
+                        style={{
+                          transform: `translate(${panOffset.x}px, ${panOffset.y}px) scale(${scale})`,
+                          transition: isDragging ? "none" : "transform 0.3s cubic-bezier(0.76, 0, 0.24, 1)",
+                          transformOrigin: "center center",
+                          cursor: "inherit",
+                          willChange: "transform",
+                        }}
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+
+                  {/* Cursor-follow zoom indicator */}
+                  {scale > NORMAL_SCALE + 0.001 && cursorPos && (
+                    <div
+                      className="pointer-events-none fixed z-[200] rounded-full border border-white/10 bg-black/70 px-2.5 py-1 font-mono text-[10px] tracking-widest text-[#0062ff] backdrop-blur-sm"
+                      style={{ left: cursorPos.x + 18, top: cursorPos.y + 18 }}
+                    >
+                      {Math.round(scale * 100)}%
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
+
+
 
             {/* Bottom Caption (Matches layout in screenshot) */}
             <div className="absolute bottom-16 flex flex-col items-center gap-3 z-50">
