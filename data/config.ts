@@ -8,7 +8,9 @@ export const personalInfo = {
   socialLinks: {
     linkedin: "https://www.linkedin.com/in/kalpesh-k-suthar-943921368/",
     github: "https://github.com/KALPESH003",
-    leetcode: "https://leetcode.com/u/kalpeshksuthar003/"
+    leetcode: "https://leetcode.com/u/kalpeshksuthar003/",
+    behance: "https://www.behance.net/kalpeshsuthar003",
+    dribbble: "https://dribbble.com/kalpesh-suthar003"
   }
 };
 

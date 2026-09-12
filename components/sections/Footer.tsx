@@ -97,39 +97,39 @@ const ScrambleText = ({
   );
 };
 
-// --- MAGNETIC PILL BUTTON ---
-const MagneticPill = ({ email }: { email: string }) => {
-  const ref = useRef<HTMLAnchorElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
+      // --- MAGNETIC PILL BUTTON ---
+          const MagneticPill = ({ email }: { email: string }) => {
+            const ref = useRef<HTMLAnchorElement>(null);
+            const x = useMotionValue(0);
+            const y = useMotionValue(0);
 
-  const smoothX = useSpring(x, { damping: 20, stiffness: 150, mass: 0.1 });
-  const smoothY = useSpring(y, { damping: 20, stiffness: 150, mass: 0.1 });
+            const smoothX = useSpring(x, { damping: 20, stiffness: 150, mass: 0.1 });
+            const smoothY = useSpring(y, { damping: 20, stiffness: 150, mass: 0.1 });
 
-  const handleMouse = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const { clientX, clientY } = e;
-    const { height, width, left, top } = ref.current!.getBoundingClientRect();
-    x.set((clientX - (left + width / 2)) * 0.2);
-    y.set((clientY - (top + height / 2)) * 0.2);
-  };
+            const handleMouse = (e: React.MouseEvent<HTMLAnchorElement>) => {
+              const { clientX, clientY } = e;
+              const { height, width, left, top } = ref.current!.getBoundingClientRect();
+              x.set((clientX - (left + width / 2)) * 0.2);
+              y.set((clientY - (top + height / 2)) * 0.2);
+            };
 
-  return (
-    <motion.a
-      href={`mailto:${email}`}
-      ref={ref}
-      onMouseMove={handleMouse}
-      onMouseLeave={() => { x.set(0); y.set(0); }}
-      style={{ x: smoothX, y: smoothY }}
-      className="group relative inline-flex items-center gap-4 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-colors duration-500 overflow-hidden"
-    >
-      <div className="absolute inset-0 translate-y-full bg-[#0062ff] group-hover:translate-y-0 transition-transform duration-700 ease-[0.76,0,0.24,1] rounded-full" />
-      <span className="relative z-10 text-sm md:text-base font-mono text-white group-hover:text-black transition-colors duration-500">
-        {email}
-      </span>
-      <div className="relative z-10 w-2 h-2 rounded-full bg-[#0062ff] group-hover:bg-black transition-colors duration-500 animate-pulse" />
-    </motion.a>
-  );
-};
+            return (
+              <motion.a
+                href={`mailto:${email}`}
+                ref={ref}
+                onMouseMove={handleMouse}
+                onMouseLeave={() => { x.set(0); y.set(0); }}
+                style={{ x: smoothX, y: smoothY }}
+                className="group relative self-start inline-flex max-w-full items-center gap-2 sm:gap-4 px-5 py-3 sm:px-8 sm:py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-colors duration-500 overflow-hidden"
+              >
+                <div className="absolute inset-0 translate-y-full bg-[#0062ff] group-hover:translate-y-0 transition-transform duration-700 ease-[0.76,0,0.24,1] rounded-full" />
+                <span className="relative z-10 min-w-0 truncate text-xs sm:text-sm md:text-base font-mono text-white group-hover:text-black transition-colors duration-500">
+                  {email}
+                </span>
+                <div className="relative z-10 w-2 h-2 shrink-0 rounded-full bg-[#0062ff] group-hover:bg-black transition-colors duration-500 animate-pulse" />
+              </motion.a>
+            );
+          };
 
 // --- CLEAN KINETIC LINK (Now supports Internal vs External links) ---
 const CleanLink = ({ title, href, isInternal = false }: { title: string; href: string; isInternal?: boolean }) => (
@@ -322,13 +322,13 @@ export default function Footer() {
       <div className="absolute bottom-[24px] right-[32px] md:right-[64px] w-4 h-4 -mr-2 -mb-2 flex items-center justify-center text-[#0062ff]/70 text-[10px] font-mono leading-none">+</div>
 
       {/* Main Glass Island */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-5 md:px-10 relative z-10">
+      <div className="relative z-10 w-full max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-10%" }}
           transition={{ duration: 1.2, ease: easePremium }}
-          className="relative z-10 w-full bg-white/[0.02] backdrop-blur-[40px] saturate-[150%] border border-white/[0.08] rounded-[2rem] md:rounded-[3rem] p-8 md:p-16 lg:p-20 flex flex-col overflow-hidden"
+          className="relative z-10 w-full bg-white/[0.02] backdrop-blur-[40px] saturate-[150%] border border-white/[0.08] rounded-[2rem] md:rounded-[3rem] p-6 sm:p-10 md:p-16 lg:p-20 flex flex-col overflow-hidden"
         >
           {/* INTERNAL GLOW LIQUID */}
           <div className="absolute inset-0 z-0 pointer-events-none">
@@ -384,7 +384,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-8 pt-12 md:pt-20">
+          <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-6 sm:gap-x-8 pt-12 md:pt-20">
             <div className="flex flex-col gap-4">
               <span className="text-[10px] font-mono tracking-[0.2em] text-white/40 uppercase">Location</span>
               <span className="text-base md:text-lg font-mono text-white/90">{personalInfo?.location || "Vadodara, IN"}</span>
@@ -399,6 +399,8 @@ export default function Footer() {
               <CleanLink title="GitHub" href={personalInfo?.socialLinks?.github || "#"} />
               <CleanLink title="LinkedIn" href={personalInfo?.socialLinks?.linkedin || "#"} />
               <CleanLink title="LeetCode" href={personalInfo?.socialLinks?.leetcode || "#"} />
+              <CleanLink title="Behance" href={personalInfo?.socialLinks?.behance || "#"} />
+              <CleanLink title="Dribbble" href={personalInfo?.socialLinks?.dribbble || "#"} />
             </div>
 
             <div className="flex flex-col gap-4">
