@@ -3,6 +3,33 @@ import { ArrowRight } from 'lucide-react';
 import { Terminal } from 'lucide-react';
 import Link from 'next/link';
 
+
+{/* ---------------------------------DRIBBBLE & BEHANCE SVGs------------------------------------------ */}
+const BehanceIcon = ({ className }) => (
+  <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <circle fill="#3A67FA" cx="256" cy="256" r="256" />
+    <path fill="#2451D1" d="M497.228,341.857L381.093,225.723l-88.316,13.576l-68.389-61.264l-93.658,13.033l-19.725,151.09 l159.634,169.419C375.51,505.661,463.494,436.629,497.228,341.857z" />
+    <path fill="#FFFFFF" d="M233.496,241.567c5.072-7.897,7.97-17.315,7.801-27.415c-0.446-27.026-22.938-48.5-49.967-48.5 h-75.462c-3.534,0-6.399,2.865-6.399,6.399v165.952c0,3.534,2.865,6.399,6.399,6.399h84.296c31.285,0,57.203-25.078,57.327-56.363 C257.572,268.866,248.06,251.868,233.496,241.567L233.496,241.567z M142.574,198.758h49.402c8.945,0,16.225,7.278,16.225,16.225 c0,8.945-7.28,16.224-16.225,16.224h-49.402V198.758z M200.897,311.296h-58.323v-46.983h58.323 c12.953,0,23.492,10.542,23.492,23.492C224.387,300.758,213.851,311.296,200.897,311.296L200.897,311.296z" />
+    <g>
+      <path fill="#D1D1D1" d="M402.532,276.27c0-38.64-30.455-70.079-67.891-70.079c-37.438,0-67.893,31.439-67.893,70.079 c0,38.643,30.458,70.078,67.893,70.078c22.714,0,43.822-11.643,56.463-31.148c1.574-2.434,3.007-4.975,4.277-7.594 c0.921-1.901-0.478-4.115-2.591-4.117l-33.373-0.084c-0.736,0-1.439,0.3-1.967,0.815c-6.303,6.127-14.027,9.025-22.807,9.025 c-16.587,0-30.489-12.405-33.951-28.941h95.199c3.668,0,6.642-2.975,6.642-6.646v-1.389H402.532z M334.641,239.297 c12.145,0,22.852,6.659,29.075,16.715h-58.154C311.787,245.957,322.493,239.297,334.641,239.297L334.641,239.297z" />
+      <path fill="#D1D1D1" d="M362.853,197.968h-60.218c-2.808,0-5.087-2.279-5.087-5.087v-15.105 c0-2.808,2.279-5.087,5.087-5.087h60.218c2.808,0,5.084,2.279,5.084,5.087v15.105C367.938,195.693,365.661,197.968,362.853,197.968 L362.853,197.968z" />
+    </g>
+  </svg>
+);
+
+const DribbbleIcon = ({ className }) => (
+  <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <circle fill="#DC4373" cx="256" cy="256" r="256" />
+    <path fill="#C13366" d="M358.334,151.376c-6.666,2.577-14.305,1.838-17.863-0.534 c-43.098-24.135-89.643-31.03-132.741-18.963c-61.693,18.227-86.893,86.635-86.73,150.494 c11.311,21.068,26.279,52.617,30.927,76.552l149.12,149.123C406.313,489.36,489.339,406.344,508.04,301.084L358.334,151.376z" />
+    <path fill="#F0F1F1" d="M255.997,109.654c-80.796,0-146.529,65.655-146.529,146.348s65.733,146.342,146.529,146.342 c80.799,0,146.535-65.646,146.535-146.342C402.532,175.309,336.796,109.654,255.997,109.654L255.997,109.654z M352.418,178.728 c16.715,20.716,26.872,46.878,27.341,75.386c-5.561-1.141-29.115-5.534-57.263-5.534c-9.082,0-18.641,0.455-28.224,1.639 c-0.809-1.967-1.619-3.927-2.469-5.906c-2.486-5.846-5.163-11.645-7.937-17.36C327.187,209.105,348.084,184.334,352.418,178.728 L352.418,178.728z M255.997,132.563c31.223,0,59.764,11.6,81.563,30.706c-3.451,4.708-22.166,28.101-63.938,43.884 c-19.335-35.344-40.498-64.61-45.535-71.406C237.063,133.668,246.405,132.563,255.997,132.563L255.997,132.563z M202.821,144.558 c4.268,5.879,25.464,35.459,45.296,70.518c-53.224,13.991-100.488,14.903-111.895,14.903h-1.212 C143.205,192.212,168.722,160.83,202.821,144.558L202.821,144.558z M132.201,256.195c0-1.019,0.017-2.038,0.05-3.051 c0.74,0.009,1.833,0.009,3.25,0.009c15.363,0,68.691-1.269,123.644-17.577c3.336,6.523,6.511,13.145,9.464,19.763 c-1.388,0.398-2.757,0.796-4.117,1.241c-61.874,19.983-95.884,72.888-101.117,81.536 C143.986,316.268,132.201,287.587,132.201,256.195L132.201,256.195z M255.997,379.818c-28.393,0-54.596-9.616-75.505-25.74 c3.537-6.934,29.206-53.15,97.013-76.75c0.041-0.017,0.086-0.033,0.136-0.045c17.003,44.265,24.204,81.417,26.179,92.931 C289.104,376.401,272.944,379.818,255.997,379.818L255.997,379.818z M326.115,358.026c-1.66-9.526-8.33-44.344-23.726-86.809 c8.635-1.343,17.036-1.874,24.914-1.874c25.874,0,46.115,5.665,50.817,7.102C372.529,310.167,353.223,339.349,326.115,358.026 L326.115,358.026z" />
+    <path fill="#D1D1D1" d="M255.997,109.654c-0.191,0-0.379,0.014-0.571,0.014v22.902c0.19,0,0.379-0.009,0.571-0.009 c31.223,0,59.764,11.6,81.563,30.706c-3.451,4.708-22.166,28.101-63.938,43.884c-6.07-11.097-12.321-21.594-18.196-30.984v60.478 c1.238-0.353,2.477-0.705,3.717-1.072c3.336,6.523,6.511,13.145,9.464,19.763c-1.388,0.398-2.757,0.796-4.117,1.239 c-3.098,1.002-6.106,2.105-9.064,3.26v26.614c6.811-3.281,14.145-6.359,22.078-9.121c0.041-0.017,0.086-0.033,0.136-0.045 c17.003,44.265,24.204,81.417,26.179,92.931c-14.714,6.187-30.873,9.604-47.823,9.604c-0.191,0-0.379-0.012-0.571-0.012v22.525 c0.191,0,0.379,0.014,0.571,0.014c80.799,0,146.535-65.646,146.535-146.342C402.532,175.309,336.796,109.654,255.997,109.654z M291.804,244.312c-2.486-5.846-5.163-11.645-7.937-17.36c43.32-17.848,64.217-42.618,68.551-48.225 c16.715,20.716,26.874,46.878,27.341,75.385c-5.561-1.141-29.115-5.534-57.261-5.534c-9.082,0-18.641,0.457-28.224,1.639 C293.462,248.251,292.654,246.291,291.804,244.312z M326.115,358.026c-1.66-9.526-8.33-44.344-23.726-86.809 c8.635-1.343,17.036-1.874,24.914-1.874c25.874,0,46.115,5.665,50.817,7.102C372.529,310.167,353.223,339.349,326.115,358.026z" />
+  </svg>
+);
+
+{/* ---------------------------------END DRIBBBLE & BEHANCE SVGs------------------------------------------ */}
+
+
+
 export default function Hero() {
   const [scrollProgress, setScrollProgress] = useState(0);
 // loading dots...
@@ -236,6 +263,7 @@ useEffect(() => {
                   </div>
               </div> */}
 
+
                {/* Under Construction: REMOVE AFTER FULLY UPDATED THINGSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS */}
              <div className="hidden xl:block absolute left-[2%] 2xl:left-[4%] top-[15%] z-20 animate-float pointer-events-auto">
                   <div className="liquid-glass relative w-[220px] h-[240px] p-6 flex flex-col justify-between overflow-hidden group hover:scale-105 hover:bg-white/5 transition-all duration-500 cursor-default">
@@ -265,10 +293,59 @@ useEffect(() => {
                     </div>
                   </div>
                 </div>
+
+
+              {/* -------------------------------------------------------------------------------------------------------------------------------- */}     
+
+                   {/* Floating Liquid Glass Card: Behance & Dribbble (Bottom Left) */}
+
+                            <div className="hidden xl:block absolute left-[2%] 2xl:left-[4%] bottom-[8%] 2xl:bottom-[14%] z-20 pointer-events-auto">
+                              <div className="liquid-glass w-[200px] p-3 flex flex-col gap-2 transition-transform duration-500 ease-out hover:scale-105">
+                                
+                                <a  href="https://www.behance.net/kalpeshsuthar003"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  aria-label="View Behance profile"
+                                  className="group flex items-center justify-between gap-2 rounded-full border border-white/10 pl-2 pr-3 py-2 transition-all duration-300 ease-out hover:bg-white hover:border-white hover:scale-[1.03] active:scale-95"
+                                >
+                                  <span className="flex items-center gap-3">
+                                    <BehanceIcon className="w-7 h-7 shrink-0" />
+                                    <span className="text-[13px] font-mono tracking-wide text-white transition-colors duration-300 ease-out group-hover:text-black">
+                                      Behance
+                                    </span>
+                                  </span>
+                                  <ArrowRight
+                                    size={14}
+                                    className="shrink-0 text-white/40 transition-all duration-300 ease-out group-hover:text-black group-hover:translate-x-0.5"
+                                  />
+                                </a>
+
+                                
+                                <a  href="https://dribbble.com/kalpesh-suthar003"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  aria-label="View Dribbble profile"
+                                  className="group flex items-center justify-between gap-2 rounded-full border border-white/10 pl-2 pr-3 py-2 transition-all duration-300 ease-out hover:bg-white hover:border-white hover:scale-[1.03] active:scale-95"
+                                >
+                                  <span className="flex items-center gap-3">
+                                    <DribbbleIcon className="w-7 h-7 shrink-0" />
+                                    <span className="text-[13px] font-mono tracking-wide text-white transition-colors duration-300 ease-out group-hover:text-black">
+                                      Dribbble
+                                    </span>
+                                  </span>
+                                  <ArrowRight
+                                    size={14}
+                                    className="shrink-0 text-white/40 transition-all duration-300 ease-out group-hover:text-black group-hover:translate-x-0.5"
+                                  />
+                                </a>
+                              </div>
+                            </div>
+
               {/* -------------------------------------------------------------------------------------------------------------------------------- */}     
 
 
-          {/* Main Hero Content */}
+
+{/* Main Hero Content */}
           <main className="relative z-10 flex flex-col justify-center items-center min-h-screen px-6 md:px-12 lg:px-20 pt-20">     
 
            <div className="max-w-6xl text-center flex flex-col items-center">
@@ -318,4 +395,3 @@ useEffect(() => {
     </>
   );
 }
-
