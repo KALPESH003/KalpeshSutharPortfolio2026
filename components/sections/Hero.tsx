@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Terminal } from 'lucide-react';
 import Link from 'next/link';
+import { SVGProps } from 'react';
 
 
 {/* ---------------------------------DRIBBBLE & BEHANCE SVGs------------------------------------------ */}
-const BehanceIcon = ({ className }) => (
+const BehanceIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" className={className}>
     <circle fill="#3A67FA" cx="256" cy="256" r="256" />
     <path fill="#2451D1" d="M497.228,341.857L381.093,225.723l-88.316,13.576l-68.389-61.264l-93.658,13.033l-19.725,151.09 l159.634,169.419C375.51,505.661,463.494,436.629,497.228,341.857z" />
@@ -17,7 +18,7 @@ const BehanceIcon = ({ className }) => (
   </svg>
 );
 
-const DribbbleIcon = ({ className }) => (
+const DribbbleIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" className={className}>
     <circle fill="#DC4373" cx="256" cy="256" r="256" />
     <path fill="#C13366" d="M358.334,151.376c-6.666,2.577-14.305,1.838-17.863-0.534 c-43.098-24.135-89.643-31.03-132.741-18.963c-61.693,18.227-86.893,86.635-86.73,150.494 c11.311,21.068,26.279,52.617,30.927,76.552l149.12,149.123C406.313,489.36,489.339,406.344,508.04,301.084L358.334,151.376z" />
