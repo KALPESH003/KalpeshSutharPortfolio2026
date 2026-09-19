@@ -12,8 +12,8 @@ const easePremium = [0.76, 0, 0.24, 1] as const;
 // --- MOCK LOCAL UI DESIGNS (Preview only needs the first 3) ---
 const uiDesigns = [
   { id: "01", title: "Land Rover Dashboard", category: "System UI", type: "ui", src: "assets/images/UiArchive/LandRoverPage.jpg?auto=format&fit=crop&q=80&w=1600" },
-  { id: "02", title: "PocuhPal Expense Tracker", category: "USER Interface", type: "ui", src: "assets/images/UiArchive/pouchpal.png?auto=format&fit=crop&q=80&w=1600" }, 
-  { id: "03", title: "Poster Design", category: "Asset", type: "Poster", src: "assets/images/UiArchive/Queen poster.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "02", title: "Pocuh Pal Expense Tracker", category: "USER Interface", type: "ui", src: "assets/images/UiArchive/pouchpal.png?auto=format&fit=crop&q=80&w=1600" }, 
+  { id: "03", title: "Graphic Design", category: "Asset", type: "Poster", src: "assets/images/UiArchive/Queen poster.png?auto=format&fit=crop&q=80&w=1600" },
 ];
 
 const totalArchiveItems = uiDesignsItems.length;
@@ -71,8 +71,8 @@ export default function UiArchivePreview() {
       >
         {/* Section Header */}
         <div className="flex items-center gap-4 mb-12">
-          <span className="w-10 h-[1px] bg-[#313131]"></span>
-          <span className="text-[10px] uppercase tracking-[0.35em] font-mono text-[#313131]">
+          <span className="w-10 h-[1px] bg-[#0062ff]"></span>
+          <span className="text-[10px] uppercase tracking-[0.35em] font-mono text-[#0062ff]">
             Local Archive
           </span>
         </div>
@@ -80,7 +80,7 @@ export default function UiArchivePreview() {
         <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <h2 className="text-[clamp(32px,4vw,56px)] font-sans font-light tracking-tight text-white uppercase flex flex-col leading-[1.05]">
             <span>Selected</span>
-            <span className="font-['Instrument_Serif'] italic lowercase text-white/60 tracking-normal">Fragments</span>
+            <span className="font-['Instrument_Serif'] italic lowercase text-white/60 tracking-normal">UI Fragments</span>
           </h2>
           <p className="text-[13px] font-mono text-white/40 max-w-sm leading-relaxed">
             An architectural collection of interfaces, brand marks, and digital systems built for the modern web.

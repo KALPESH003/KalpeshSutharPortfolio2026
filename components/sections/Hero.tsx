@@ -250,14 +250,14 @@ useEffect(() => {
 
         {/* Under Construction: REMOVE AFTER FULLY UPDATED THINGSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS */}
              <div className="hidden xl:block absolute left-[2%] 2xl:left-[4%] top-[15%] z-20 animate-float pointer-events-auto">
-                  <div className="liquid-glass relative w-[220px] h-[240px] p-6 flex flex-col justify-between overflow-hidden group hover:scale-105 hover:bg-white/5 transition-all duration-500 cursor-default">
+                  <div className="liquid-glass relative w-[220px] h-[250px] p-6 flex flex-col justify-between overflow-hidden group hover:scale-105 hover:bg-white/5 transition-all duration-500 cursor-default">
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
                       <div className="absolute inset-x-0 -top-20 h-20 bg-gradient-to-b from-transparent via-[#ff6b00]/15 to-transparent" />
                     </div>
                     <div className="relative z-10 flex flex-col h-full justify-between">
-                      <div>
+                      <div className="flex items-center mb-2">
                         <span className="text-[10px] uppercase tracking-[0.35em] text-[#ff0000] font-mono bg-[#ff3333]/10 px-2 py-1 rounded-sm">
-                          SYS_UPDATE
+                          SYS_UPDATE.
                         </span>
                       </div>
                       <div>
