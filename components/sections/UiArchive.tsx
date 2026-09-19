@@ -11,7 +11,7 @@ const easePremium = [0.76, 0, 0.24, 1] as const;
 
 // --- MOCK LOCAL UI DESIGNS (Preview only needs the first 3) ---
 const uiDesigns = [
-  { id: "01", title: "Land Rover Dashboard", category: "System UI", type: "ui", src: "assets/images/UiArchive/RRui.png?auto=format&fit=crop&q=80&w=1600" },
+  { id: "01", title: "Land Rover Dashboard", category: "System UI", type: "ui", src: "assets/images/UiArchive/LandRoverPage.jpg?auto=format&fit=crop&q=80&w=1600" },
   { id: "02", title: "PocuhPal Expense Tracker", category: "USER Interface", type: "ui", src: "assets/images/UiArchive/pouchpal.png?auto=format&fit=crop&q=80&w=1600" }, 
   { id: "03", title: "Poster Design", category: "Asset", type: "Poster", src: "assets/images/UiArchive/Queen poster.png?auto=format&fit=crop&q=80&w=1600" },
 ];
