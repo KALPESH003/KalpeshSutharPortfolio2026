@@ -247,25 +247,8 @@ useEffect(() => {
               </h1>
           </header>
               
-              {/* The Liquid Glass Card
-              <div className="hidden xl:block absolute left-[-3vw] top-3/6 -translate-y-1/4 z-20 animate-float">
-                  <div className="liquid-glass w-[200px] h-[220px] p-7 -translate-y-[50px] flex flex-col justify-between mb-2 hover:scale-105 hover:-translate-y-[55px] transition-transform duration-500 cursor-default">
-                    <div className="text-[12px] text-white/50 tracking-widest font-mono font-medium  flex items-center gap-2">
-                      [ EST. 2025 ]
-                    </div>
-                    <div>
-                      <h3 className="text-[18px] leading-[1.2] font-medium mb-3">
-                        Creative <span className="font-['Instrument_Serif'] italic  text-[22px] font-normal tracking-wide text-[#b1b1b1]">Technology</span> Studio
-                      </h3>
-                      <p className="text-[11px] text-white/40 font-mono leading-relaxed uppercase tracking-wider border-t border-white/10 pt-3 mt-3">
-                        Built with Code. Designed with Vision.
-                      </p>
-                    </div>
-                  </div>
-              </div> */}
 
-
-               {/* Under Construction: REMOVE AFTER FULLY UPDATED THINGSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS */}
+        {/* Under Construction: REMOVE AFTER FULLY UPDATED THINGSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS */}
              <div className="hidden xl:block absolute left-[2%] 2xl:left-[4%] top-[15%] z-20 animate-float pointer-events-auto">
                   <div className="liquid-glass relative w-[220px] h-[240px] p-6 flex flex-col justify-between overflow-hidden group hover:scale-105 hover:bg-white/5 transition-all duration-500 cursor-default">
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -296,98 +279,111 @@ useEffect(() => {
                 </div>
 
 
-              {/* -------------------------------------------------------------------------------------------------------------------------------- */}     
+{/* -------------------------------------------------------------------------------------------------------------------------------- */}     
 
-                   {/* Floating Liquid Glass Card: Behance & Dribbble (Bottom Left) */}
+        {/* Main Hero Content */}
+        <main className="relative z-10 flex flex-col justify-center items-center min-h-screen px-6 md:px-12 lg:px-20 pt-20">     
 
-                            <div className="hidden xl:block absolute left-[2%] 2xl:left-[4%] bottom-[8%] 2xl:bottom-[14%] z-20 pointer-events-auto">
-                              <div className="liquid-glass w-[200px] p-3 flex flex-col gap-2 transition-transform duration-500 ease-out hover:scale-105">
+              <div className="max-w-6xl text-center flex flex-col items-center">
+
+                            {/* Hero Content & Typography */}
+                            <span className="animate-reveal font-['Plus_Jakarta_Sans'] font-bold text-[11px] md:text-[13px] text-[#0077ff] tracking-[0.3em] uppercase mb-6 block drop-shadow-md border border-[#0077ff]/30 px-4 py-1.5 rounded-full bg-[#0077ff]/5 backdrop-blur-sm">
+                              Creative Technologist
+                            </span>
+                            
+                            <h2 className="font-extrabold text-[50px] sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[110px] 2xl:text-[130px] uppercase tracking-[-0.06em] leading-[0.92] mb-10 drop-shadow-[0_0_40px_rgba(0,0,0,0.8)] text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/60">
+                              Crafting Digital <br/> Experiences<span className="text-[#0077ff] text-[80px]">.</span>
+                            </h2>
+
+                            <p className="text-[14px] md:text-[15px] text-white/70 max-w-[512px] leading-relaxed mb-12 font-mono text-center">
+                              Master in-demand coding skills with our immersive curriculum. Build real-world projects, connect with mentors, and step confidently into your future in tech.
+                            </p>
+
+                {/* The CTA Family */}
+                          <div className="animate-reveal delay-300 flex items-center p-1.5 rounded-full bg-white from-transparent via-[#ff6b00]/15 to-transparent border border-white/10 backdrop-blur-md shadow-2xl pointer-events-auto">
+                              
+                              {/* Primary CTA: View Archive */}
+                              <Link 
+                                href="/ui-archive"
+                                className="group flex items-center justify-center gap-3 bg-white text-black px-8 h-14 rounded-full border border-black/10 font-bold text-[13px] uppercase tracking-[0.1em] hover:bg-black hover:text-white active:scale-95 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+                              >
+                                View Archive
+                                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                              </Link>
+
+                              {/* Subtle Vertical Divider */}
+                              <div className="w-[1px] h-8 bg-black/10 mx-2 hidden sm:block"></div>
+
+                              {/* Secondary CTAs: Social Dock */}
+                              <div className="flex items-center gap-1">
                                 
-                                <a  href="https://www.behance.net/kalpeshsuthar003"
+                                <a 
+                                  href="https://www.behance.net/kalpeshsuthar003"
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   aria-label="View Behance profile"
-                                  className="group flex items-center justify-between gap-2 rounded-full border border-white/10 pl-2 pr-3 py-2 transition-all duration-300 ease-out hover:bg-white hover:border-white hover:scale-[1.03] active:scale-95"
+                                  className="group flex items-center justify-center w-14 h-14 rounded-full  border border-black/10 hover:bg-white active:scale-95 transition-all duration-300"
                                 >
-                                  <span className="flex items-center gap-3">
-                                    <BehanceIcon className="w-7 h-7 shrink-0" />
-                                    <span className="text-[13px] font-mono tracking-wide text-white transition-colors duration-300 ease-out group-hover:text-black">
-                                      Behance
-                                    </span>
-                                  </span>
-                                  <ArrowRight
-                                    size={14}
-                                    className="shrink-0 text-white/40 transition-all duration-300 ease-out group-hover:text-black group-hover:translate-x-0.5"
-                                  />
+                                  {/* Normal color. Scales up smoothly on hover */}
+                                  <BehanceIcon className="w-10 h-10 transition-transform duration-300 ease-out group-hover:scale-120" />
                                 </a>
 
-                                
-                                <a  href="https://dribbble.com/kalpesh-suthar003"
+                                <a 
+                                  href="https://dribbble.com/kalpesh-suthar003"
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   aria-label="View Dribbble profile"
-                                  className="group flex items-center justify-between gap-2 rounded-full border border-white/10 pl-2 pr-3 py-2 transition-all duration-300 ease-out hover:bg-white hover:border-white hover:scale-[1.03] active:scale-95"
+                                  className="group flex items-center justify-center w-14 h-14 rounded-full  border border-black/10 hover:bg-white active:scale-95 transition-all duration-300"
                                 >
-                                  <span className="flex items-center gap-3">
-                                    <DribbbleIcon className="w-7 h-7 shrink-0" />
-                                    <span className="text-[13px] font-mono tracking-wide text-white transition-colors duration-300 ease-out group-hover:text-black">
-                                      Dribbble
-                                    </span>
-                                  </span>
-                                  <ArrowRight
-                                    size={14}
-                                    className="shrink-0 text-white/40 transition-all duration-300 ease-out group-hover:text-black group-hover:translate-x-0.5"
-                                  />
+                                  {/* Normal color. Scales up smoothly on hover */}
+                                  <DribbbleIcon className="w-10 h-10 transition-transform duration-300 ease-out group-hover:scale-120" />
                                 </a>
+
                               </div>
-                            </div>
-
-              {/* -------------------------------------------------------------------------------------------------------------------------------- */}     
-
-
-
-{/* Main Hero Content */}
-          <main className="relative z-10 flex flex-col justify-center items-center min-h-screen px-6 md:px-12 lg:px-20 pt-20">     
-
-           <div className="max-w-6xl text-center flex flex-col items-center">
-
-              {/* Hero Content & Typography */}
-              <span className="animate-reveal font-['Plus_Jakarta_Sans'] font-bold text-[11px] md:text-[13px] text-[#0077ff] tracking-[0.3em] uppercase mb-6 block drop-shadow-md border border-[#0077ff]/30 px-4 py-1.5 rounded-full bg-[#0077ff]/5 backdrop-blur-sm">
-                 Creative Technologist
-              </span>
-              
-              <h2 className="font-extrabold text-[50px] sm:text-[60px] md:text-[80px] lg:text-[100px] xl:text-[110px] 2xl:text-[130px] uppercase tracking-[-0.06em] leading-[0.92] mb-10 drop-shadow-[0_0_40px_rgba(0,0,0,0.8)] text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/60  ">
-                Crafting Digital <br/> Experiences<span className="text-[#0077ff] text-[80px]">.</span>
-              </h2>
-     
-              <p className="text-[14px] md:text-[15px] text-white/70 max-w-[512px] leading-relaxed mb-12 font-mono text-center">
-                Master in-demand coding skills with our immersive curriculum. Build real-world projects, connect with mentors, and step confidently into your future in tech.
-              </p>
-            <div className="animate-reveal delay-300 flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Link 
-                href="/ui-archive"
-                className="btn-glow group relative flex items-center justify-center gap-3 bg-white text-black px-8 py-4 rounded-full font-bold text-[13px] uppercase tracking-[0.1em] hover:bg-gray-100 transition-colors pointer-events-auto"
-              >
-                <span className="w-4 h-4 invisible block" />
-                View Archive
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-
-            </div>
-          </main>
-          
-           {/* Central "Scroll to Explore" Indicator */}
-          <div className="absolute bottom-[40px] left-[0px] md:left-[84px] lg:left-[100px] right-0 z-20 pointer-events-none">
-            <div className="relative w-full flex flex-col items-center gap-4 animate-reveal delay-400">
-              <span className="text-[9px] font-['Space_Mono'] uppercase tracking-[0.3em] text-white/40">
-                Scroll to Explore
-              </span>
-              <div className="w-[2px] h-[50px] bg-white/10 relative overflow-hidden">
-                <div className="w-full h-1/3 bg-white/60 absolute top-0 left-0 scroll-indicator-line" />
+                          </div>
               </div>
-            </div>
-          </div>
+        </main>
+
+
+                        {/* Central "Scroll to Explore" Indicator */}
+                        <div className="absolute bottom-[40px] left-[0px] md:left-[84px] lg:left-[100px] right-0 z-20 pointer-events-none">
+                          
+                          {/* Custom keyframes for the luxurious, slow glide effect */}
+                          <style>{`
+                            @keyframes elegant-glide {
+                              0% { transform: translateY(-22px); opacity: 0; }
+                              25% { transform: translateY(0px); opacity: 1; }
+                              65% { transform: translateY(0px); opacity: 1; }                            
+                              100% { transform: translateY(22px); opacity: 0; }
+                            }
+                            .animate-elegant-glide {
+                              animation: elegant-glide 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+                            }
+                          `}</style>
+
+                          <div className="relative w-full flex flex-col items-center gap-5 animate-reveal delay-400">
+                            {/* ml-1 balances the extra letter spacing for true optical center */}
+                            
+                            
+                            <div className="relative h-[56px] w-full flex justify-center items-center overflow-hidden">
+                              {/* Original classic 'V'(Chevron) dimensions*/}
+                              <svg 
+                                className="w-[14px] h-[8px] text-white/60 animate-elegant-glide" 
+                                viewBox="0 0 14 8" 
+                                fill="none" 
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path 
+                                  d="M1 1L7 7L13 1" 
+                                  stroke="currentColor" 
+                                  strokeWidth="2" 
+                                  strokeLinecap="round" 
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
 
         </div>
         
